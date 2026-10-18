@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function GlobalNotFound() {
   return (
     <html lang="fr" data-theme="dark" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="grid min-h-dvh place-items-center px-5">
+      <body className="grid min-h-dvh place-items-center px-5" suppressHydrationWarning>
         <main className="max-w-xl">
           <p className="font-mono text-sm text-accent">404</p>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight">{fr.notFound.title}</h1>

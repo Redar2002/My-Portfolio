@@ -49,7 +49,8 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body id="top" className="min-h-dvh">
+      {/* suppressHydrationWarning : certaines extensions de navigateur ajoutent des attributs à <body> avant React. */}
+      <body id="top" className="min-h-dvh" suppressHydrationWarning>
         <a
           href="#main"
           className="sr-only z-50 rounded-md bg-accent px-4 py-2 font-medium text-accent-fg focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
