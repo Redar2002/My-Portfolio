@@ -1,0 +1,49 @@
+{/* Case study — Meeting Intelligence Platform (EN). <Todo> tags are highlighted on the site: replace them with verified facts. */}
+
+## Context
+
+Final-year internship at **Inspirigence**, January to June 2026. Goal: treat meeting content as a first-class data source.
+
+<Todo>short description of Inspirigence and the host team</Todo>
+
+## Problem
+
+A meeting produces decisions, owners and deadlines. Without a reliable report, they get lost:
+
+- reports are written by hand, when they exist at all;
+- action items are not tracked from one meeting to the next;
+- no metric measures how effective meetings are.
+
+## My role
+
+- Designed the NLP/RAG pipeline in Python.
+- Integrated the **Gemini** API to generate summaries, decisions, action items and KPIs.
+- Connected tools through **MCP** (Model Context Protocol).
+- Built the metrics in **Power BI**.
+
+<Todo>exact scope: solo or team, other contributors</Todo>
+
+## Architecture
+
+<Architecture />
+
+## Technical choices and trade-offs
+
+- **RAG rather than fine-tuning.** Answers stay grounded in the actual meeting content, without retraining a model. The trade-off: quality depends on how text is chunked and retrieved.
+- **Structured outputs.** The model returns defined fields (decisions, actions, owners) instead of free text, so they can be counted and tracked in Power BI.
+- **MCP for integrations.** One standard protocol to connect the model to tools, instead of one-off integrations.
+
+<Todo>trade-offs faced: API cost, latency, data confidentiality</Todo>
+
+## Outcomes
+
+- Summaries, decisions and action items generated automatically from meetings.
+- Meeting metrics available in Power BI.
+- <Todo>number of meetings analysed</Todo>
+- <Todo>time saved per report, or user feedback</Todo>
+
+## Limitations and next steps
+
+- Evaluate summary quality with a rubric and annotated examples. <Todo>evaluation method used</Todo>
+- Handle multilingual meetings (French, Arabic, English).
+- Push generated action items to a task-management tool.

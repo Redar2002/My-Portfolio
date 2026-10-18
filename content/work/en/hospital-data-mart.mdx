@@ -1,0 +1,46 @@
+{/* Case study — Hospital management Data Mart (EN). */}
+
+## Context
+
+Academic project in the Business Intelligence engineering degree at ISMAGI, March to April 2025. Audience: a hospital's **medical management**.
+
+## Problem
+
+Consultations are recorded in a transactional (OLTP) system, designed for data entry rather than analysis. Management cannot easily answer questions such as:
+
+- how many consultations per department and per month?
+- what is the average duration per doctor?
+- what do medical procedures cost per period?
+
+## My role
+
+- Alignment matrix between business goals and metrics.
+- Star-schema modelling and data dictionary.
+- SSIS ETL development.
+- SSAS cube and Power BI reports.
+
+## Architecture
+
+<Architecture />
+
+The star schema has one fact table, **FactConsultation**, and four dimensions: **DimDate**, **DimDoctor**, **DimDepartment**, **DimPatient**. Key measures: number of consultations, consultation duration, cost of medical procedures.
+
+## Technical choices and trade-offs
+
+- **Star rather than snowflake.** Fewer joins, simpler queries and faster reports, at the cost of slight redundancy in dimensions.
+- **Grain = one consultation.** The finest level, which supports every requested aggregate.
+- **SSAS cube.** Measures are pre-aggregated for fast slicing by department, doctor and period.
+- **One Microsoft ecosystem** (SQL Server, SSIS, SSAS, Power BI): native integration, but a single-vendor dependency.
+
+## Outcomes
+
+- Interactive Power BI dashboard for medical management.
+- Multidimensional analysis of consultations by department, doctor and period.
+- Data dictionary documenting every table and measure.
+- <Todo>data volume processed, or report refresh time</Todo>
+
+## Limitations and next steps
+
+- The data comes from an academic setting: it needs validating on real data.
+- Add automated quality checks to the SSIS flow.
+- Track dimension changes over time (type 2 SCD) for doctors and departments.

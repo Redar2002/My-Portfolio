@@ -1,0 +1,46 @@
+{/* Étude de cas — Data Mart de gestion hospitalière (FR). */}
+
+## Contexte
+
+Projet académique du cycle ingénieur en Business Intelligence à l'ISMAGI, de mars à avril 2025. Cible : la **direction médicale** d'un établissement hospitalier.
+
+## Problème
+
+Les consultations sont enregistrées dans un système transactionnel (OLTP), conçu pour saisir, pas pour analyser. La direction ne peut pas répondre simplement à des questions comme :
+
+- combien de consultations par service et par mois ?
+- quelle durée moyenne par médecin ?
+- quel coût des actes médicaux par période ?
+
+## Mon rôle
+
+- Matrice d'alignement entre objectifs métier et indicateurs.
+- Modélisation en étoile et dictionnaire de données.
+- Développement de l'ETL SSIS.
+- Création du cube SSAS et des rapports Power BI.
+
+## Architecture
+
+<Architecture />
+
+Le modèle en étoile repose sur une table de faits **FactConsultation** et quatre dimensions : **DimDate**, **DimMédecin**, **DimService**, **DimPatient**. Mesures clés : nombre de consultations, durée des consultations, coût des actes médicaux.
+
+## Choix techniques et compromis
+
+- **Schéma en étoile plutôt qu'en flocon.** Moins de jointures, des requêtes plus simples et des rapports plus rapides, au prix d'une légère redondance dans les dimensions.
+- **Grain = une consultation.** C'est le niveau le plus fin, qui permet tous les agrégats demandés.
+- **Cube SSAS.** Les mesures sont pré-agrégées pour une navigation rapide par service, médecin et période.
+- **Écosystème Microsoft homogène** (SQL Server, SSIS, SSAS, Power BI) : intégration native, mais dépendance à un seul éditeur.
+
+## Résultats
+
+- Tableau de bord Power BI interactif pour la direction médicale.
+- Analyse multidimensionnelle des consultations par service, médecin et période.
+- Dictionnaire de données documentant chaque table et chaque mesure.
+- <Todo>volume de données traité, ou temps de rafraîchissement du rapport</Todo>
+
+## Limites et prochaines étapes
+
+- Les données proviennent d'un contexte académique : à valider sur des données réelles.
+- Ajouter des contrôles de qualité automatisés dans le flux SSIS.
+- Historiser les changements de dimensions (SCD de type 2) pour les médecins et les services.

@@ -1,12 +1,75 @@
-# React + Vite
+# Portfolio — Reda Laksyer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio bilingue (FR/EN) d'ingénieur BI & Data/IA.
+Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · Framer Motion · MDX.
 
-Currently, two official plugins are available:
+## Lancer le projet
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev        # http://localhost:3000 → redirige vers /fr
+npm run build      # build de production
+npm run start      # sert le build
+npm run lint
+npm run typecheck
+```
 
-## Expanding the ESLint configuration
+> Windows / PowerShell : si `npm` est bloqué, exécutez une fois
+> `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Arborescence
+
+```
+app/
+  [locale]/                 /fr et /en (FR par défaut, redirection de /)
+    layout.tsx              <html lang>, thème, skip link, en-tête, pied de page, métadonnées
+    page.tsx                accueil : sections 01 → 07 + JSON-LD Person
+    opengraph-image.tsx     image OG générée (+ twitter-image.tsx)
+    work/[slug]/page.tsx    gabarit d'étude de cas (contenu MDX)
+  global-not-found.tsx      404 globale
+  sitemap.ts · robots.ts · icon.svg · globals.css
+components/
+  layout/                   Header, Footer, ThemeToggle, LanguageSwitch, MotionProvider
+  sections/                 Hero, Skills, Projects, Architecture, Method, Stack, Journey, Contact
+  illustrations/            illustrations SVG animées des projets
+  ArchitectureDiagram.tsx   diagramme interactif (clavier : ← → ↑ ↓ Début Fin)
+  ui/                       Section, Reveal, Badge, StatusBadge, RichText, Todo, Figure
+content/                    ← TOUT le contenu éditable est ici
+  site.ts                   identité, contact, CV, langues, 3 variantes de promesse du hero
+  i18n/fr.ts · i18n/en.ts   textes d'interface
+  projects.ts               projets (problème / construit / résultat, statut, tags)
+  skills.ts                 4 disciplines → projets liés
+  architecture.ts           nœuds des diagrammes par projet
+  method.ts                 5 étapes + principes
+  stack.ts                  outils par rôle → projets
+  timeline.ts               parcours
+  work/{fr,en}/*.mdx        études de cas
+lib/                        i18n, SEO, polices, chargement MDX, image OG
+public/cv/                  CV PDF
+public/work/elia/           captures réelles du projet Elia
+```
+
+## Modifier le contenu
+
+- **Textes et données** : éditez les fichiers de `content/`. Chaque champ bilingue s'écrit `{ fr: "…", en: "…" }`.
+- **Promesse du hero** : `content/site.ts` → `heroTagline` (0, 1 ou 2) choisit parmi les 3 variantes.
+- **Études de cas** : `content/work/fr/<slug>.mdx` et `content/work/en/<slug>.mdx`.
+  Composants disponibles : `<Architecture />`, `<Todo>…</Todo>`, `<Figure src width height alt caption />`.
+- **Placeholders** : tout ce qui est marqué `[À COMPLÉTER : …]` ou `<Todo>` s'affiche en surbrillance.
+  Remplacez-les par des faits vérifiés — aucun chiffre n'a été inventé.
+- **CV anglais** : déposez le PDF dans `public/cv/` puis renseignez `cv.en` dans `content/site.ts`.
+
+## Déployer sur Vercel
+
+1. Importer le dépôt sur vercel.com (framework détecté automatiquement).
+2. Ajouter la variable d'environnement `NEXT_PUBLIC_SITE_URL` (ex. `https://reda-laksyer.vercel.app`),
+   utilisée pour les URL canoniques, le sitemap et les images OG.
+3. Déployer.
+
+## Accessibilité et performance
+
+- Thème sombre par défaut, bascule clair/sombre mémorisée, sans flash au chargement.
+- Lien « Aller au contenu », navigation clavier complète, motifs ARIA `tabs`, contrastes AA.
+- `prefers-reduced-motion` respecté (CSS et Framer Motion).
+- Polices auto-hébergées, illustrations en SVG, pages statiques.
+  Lighthouse (local, mobile) : 96–99 performance, 100 accessibilité, bonnes pratiques et SEO.

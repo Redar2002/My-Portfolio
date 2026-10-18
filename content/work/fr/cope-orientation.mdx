@@ -1,0 +1,39 @@
+{/* Étude de cas — Application d'orientation éducative, COPE (FR). */}
+
+## Contexte
+
+Stage au **COPE** (Centre d'orientation et de planification de l'éducation) à Rabat, de mars à juin 2025.
+
+## Problème
+
+L'orientation et la planification éducative s'appuient sur des informations nombreuses et qui évoluent : filières, établissements, parcours. Il fallait un outil web centralisé, que l'équipe puisse faire évoluer sans tout réécrire.
+
+<Todo>besoin précis exprimé par le COPE et utilisateurs visés</Todo>
+
+## Mon rôle
+
+- Conception et développement de l'API REST avec **Laravel Lumen**.
+- Développement de l'interface utilisateur avec **React**.
+- Mise en place d'une architecture modulaire.
+
+## Architecture
+
+<Architecture />
+
+## Choix techniques et compromis
+
+- **Lumen plutôt que Laravel complet.** Un micro-framework léger, adapté à une API pure, au prix de fonctionnalités à ajouter soi-même (sessions, vues).
+- **API et front séparés.** Le front React consomme l'API en JSON : chaque partie évolue indépendamment, mais il faut gérer CORS et l'authentification.
+- **Modules par domaine.** Chaque domaine fonctionnel a son propre module, ce qui facilite la maintenance et l'arrivée de nouveaux développeurs.
+
+## Résultats
+
+- Application web livrée en fin de stage : API REST et interface React.
+- <Todo>modules ou fonctionnalités livrés</Todo>
+- <Todo>utilisateurs ou retours de l'équipe du COPE</Todo>
+
+## Limites et prochaines étapes
+
+- Ajouter des tests automatisés sur les points d'accès de l'API.
+- Documenter l'API (OpenAPI) pour faciliter sa reprise.
+- Ajouter un tableau de bord de suivi des orientations.

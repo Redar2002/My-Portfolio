@@ -1,0 +1,48 @@
+{/* Étude de cas — Prévision des flux électriques en Belgique (FR). */}
+
+## Contexte
+
+Projet de fin d'année à l'ISMAGI, d'avril à août 2025. Données : les flux d'électricité transfrontaliers publiés en open data par **Elia**, le gestionnaire du réseau de transport belge.
+
+## Problème
+
+La Belgique échange de l'électricité avec cinq voisins : Pays-Bas, France, Allemagne, Luxembourg et Royaume-Uni. Ces flux changent de sens et d'intensité au fil de la journée. Les observer après coup ne suffit pas : il faut les **anticiper**.
+
+## Mon rôle
+
+- Collecte automatisée des données via l'API Elia.
+- Préparation des séries temporelles et contrôle de la qualité.
+- Entraînement et comparaison des modèles de prévision.
+- Conception du tableau de bord interactif.
+
+## Architecture
+
+<Architecture />
+
+<Figure src="/work/elia/carte-interconnexions.webp" width={1366} height={876} alt="Carte des interconnexions de la Belgique avec les pays voisins, avec indicateurs d'import, d'export et de balance nette" caption="Carte des interconnexions et indicateurs d'import, d'export et de balance nette." />
+
+<Figure src="/work/elia/evolution-flux.webp" width={1313} height={763} alt="Graphique en courbes de l'évolution horaire des flux par pays sur une journée" caption="Évolution horaire des flux par frontière." />
+
+## Choix techniques et compromis
+
+- **Séries temporelles d'abord.** Un modèle ARIMA donne une base interprétable, avec des intervalles de confiance lisibles pour un non-spécialiste.
+- **Horizon et intervalle réglables.** L'utilisateur choisit l'horizon de prévision et le niveau de confiance, au lieu de subir une prévision unique.
+- **Qualité affichée.** Le tableau de bord indique la date de dernière mise à jour et la qualité des données, pour qu'on sache sur quoi repose chaque chiffre.
+
+<Figure src="/work/elia/parametres-prevision.webp" width={1327} height={462} alt="Panneau de paramètres de prévision : horizon, pays, modèle et intervalle de confiance" caption="Paramètres de prévision : horizon, pays, modèle, intervalle de confiance." />
+
+<Todo>autres modèles testés et raison du choix final</Todo>
+
+## Résultats
+
+- Flux import/export suivis sur les cinq frontières de la Belgique.
+- Prévisions avec intervalle de confiance, par pays et par horizon.
+- <Todo>précision du modèle retenu (MAPE, RMSE ou MAE) sur une période de test</Todo>
+
+<Figure src="/work/elia/statistiques-previsions.webp" width={663} height={333} alt="Tableau des statistiques de prévision par pays : moyenne, minimum, maximum, écart-type et tendance" caption="Statistiques des prévisions par pays." />
+
+## Limites et prochaines étapes
+
+- Ajouter des variables explicatives : météo, production renouvelable, prix.
+- Comparer à des modèles de Machine Learning plus riches sur la même période de test.
+- Automatiser le réentraînement à intervalle régulier.

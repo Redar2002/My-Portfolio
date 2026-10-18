@@ -1,0 +1,48 @@
+{/* Case study — Forecasting electricity flows in Belgium (EN). */}
+
+## Context
+
+End-of-year project at ISMAGI, April to August 2025. Data: cross-border electricity flows published as open data by **Elia**, Belgium's transmission system operator.
+
+## Problem
+
+Belgium exchanges electricity with five neighbours: the Netherlands, France, Germany, Luxembourg and the United Kingdom. These flows change direction and volume throughout the day. Observing them after the fact is not enough: they need to be **anticipated**.
+
+## My role
+
+- Automated data collection from the Elia API.
+- Time-series preparation and quality checks.
+- Training and comparing forecasting models.
+- Designing the interactive dashboard.
+
+## Architecture
+
+<Architecture />
+
+<Figure src="/work/elia/carte-interconnexions.webp" width={1366} height={876} alt="Map of Belgium's interconnections with neighbouring countries, with import, export and net balance indicators" caption="Interconnection map with import, export and net balance indicators (interface in French)." />
+
+<Figure src="/work/elia/evolution-flux.webp" width={1313} height={763} alt="Line chart of hourly flows per country over one day" caption="Hourly flows per border." />
+
+## Technical choices and trade-offs
+
+- **Time series first.** An ARIMA model gives an interpretable baseline, with confidence intervals a non-specialist can read.
+- **Adjustable horizon and interval.** Users choose the forecast horizon and confidence level instead of receiving a single forecast.
+- **Visible data quality.** The dashboard shows the last update and data quality, so everyone knows what each number rests on.
+
+<Figure src="/work/elia/parametres-prevision.webp" width={1327} height={462} alt="Forecast settings panel: horizon, country, model and confidence interval" caption="Forecast settings: horizon, country, model, confidence interval." />
+
+<Todo>other models tested and why the final one was chosen</Todo>
+
+## Outcomes
+
+- Import/export flows tracked across Belgium's five borders.
+- Forecasts with confidence intervals, per country and per horizon.
+- <Todo>accuracy of the chosen model (MAPE, RMSE or MAE) on a test period</Todo>
+
+<Figure src="/work/elia/statistiques-previsions.webp" width={663} height={333} alt="Table of forecast statistics per country: mean, minimum, maximum, standard deviation and trend" caption="Forecast statistics per country." />
+
+## Limitations and next steps
+
+- Add explanatory variables: weather, renewable output, prices.
+- Compare against richer machine learning models on the same test period.
+- Automate retraining on a regular schedule.

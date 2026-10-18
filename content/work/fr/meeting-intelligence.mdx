@@ -1,0 +1,49 @@
+{/* Étude de cas — Plateforme de Meeting Intelligence (FR). Les balises <Todo> s'affichent en surbrillance : remplacez-les par des faits vérifiés. */}
+
+## Contexte
+
+Stage de fin d'études chez **Inspirigence**, de janvier à juin 2026. Objectif : exploiter le contenu des réunions comme une source de données à part entière.
+
+<Todo>présentation courte d'Inspirigence et de l'équipe d'accueil</Todo>
+
+## Problème
+
+Une réunion produit des décisions, des responsabilités et des échéances. Sans compte rendu fiable, ces éléments se perdent :
+
+- les comptes rendus sont rédigés à la main, quand ils existent ;
+- les actions ne sont pas suivies d'une réunion à l'autre ;
+- aucun indicateur ne mesure l'efficacité des réunions.
+
+## Mon rôle
+
+- Conception du pipeline NLP/RAG en Python.
+- Intégration de l'API **Gemini** pour générer synthèses, décisions, actions et KPI.
+- Connexion des outils via **MCP** (Model Context Protocol).
+- Construction des indicateurs dans **Power BI**.
+
+<Todo>périmètre exact : seul ou en équipe, autres contributeurs</Todo>
+
+## Architecture
+
+<Architecture />
+
+## Choix techniques et compromis
+
+- **RAG plutôt que fine-tuning.** Les réponses restent ancrées dans le contenu réel des réunions, sans réentraîner de modèle. En contrepartie, la qualité dépend du découpage et de la recherche des passages.
+- **Sorties structurées.** Le modèle produit des champs définis (décisions, actions, responsables) plutôt qu'un texte libre, pour pouvoir les compter et les suivre dans Power BI.
+- **MCP pour les intégrations.** Un protocole standard pour connecter le modèle aux outils, au lieu d'intégrations écrites au cas par cas.
+
+<Todo>compromis rencontrés : coût des appels API, latence, confidentialité des données</Todo>
+
+## Résultats
+
+- Synthèses, décisions et actions générées automatiquement à partir des réunions.
+- Indicateurs de réunion consultables dans Power BI.
+- <Todo>nombre de réunions analysées</Todo>
+- <Todo>temps gagné par compte rendu, ou retour des utilisateurs</Todo>
+
+## Limites et prochaines étapes
+
+- Évaluer la qualité des synthèses avec une grille et des exemples annotés. <Todo>méthode d'évaluation utilisée</Todo>
+- Gérer les réunions multilingues (français, arabe, anglais).
+- Relier les actions générées à un outil de gestion de tâches.

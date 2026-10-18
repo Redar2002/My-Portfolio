@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Jetons de couleur — une seule couleur d'accent, contraste AA vérifié sur chaque fond. */
+:root,
+[data-theme="dark"] {
+  --bg: #06080b;
+  --surface: #0c1016;
+  --surface-2: #121821;
+  --line: #1e2631;
+  --line-strong: #2d3744;
+  --fg: #e8edf3;
+  --muted: #9aa5b4;
+  --accent: #3d9bff;
+  --accent-fg: #03101f;
+  --accent-soft: rgb(61 155 255 / 0.12);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --line: #dde3ea;
+  --line-strong: #c3ccd7;
+  --fg: #0a0f16;
+  --muted: #4a5564;
+  --accent: #0a5bd3;
+  --accent-fg: #ffffff;
+  --accent-soft: rgb(10 91 211 / 0.08);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Placeholder de contenu à compléter : volontairement visible. */
+.todo {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--fg);
+  background: var(--accent-soft);
+  border: 1px dashed var(--accent);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Grille de fond discrète */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 30% 20%, black 10%, transparent 70%);
+}
+
+/* Animations des illustrations SVG */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+@keyframes travel {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--scan-distance, 120px));
+  }
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: var(--len, 600);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.anim-flow {
+  stroke-dasharray: 4 6;
+  animation: flow 1s linear infinite;
+}
+.anim-travel {
+  animation: travel 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  offset-rotate: 0deg;
+}
+.anim-pulse {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+.anim-grow {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: grow-x 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.anim-scan {
+  animation: scan 3.6s ease-in-out infinite alternate;
+}
+.anim-draw {
+  stroke-dasharray: var(--len, 600);
+  animation: draw 2.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.anim-blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Typographie des études de cas (contenu MDX) */
+.prose-case h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 3.5rem 0 1rem;
+  scroll-margin-top: 6rem;
+}
+.prose-case h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+}
+.prose-case p,
+.prose-case li {
+  color: var(--muted);
+  line-height: 1.75;
+}
+.prose-case p {
+  margin: 0 0 1rem;
+}
+.prose-case strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+.prose-case ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+.prose-case ul > li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin: 0.4rem 0;
+}
+.prose-case ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+.prose-case a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-case code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  color: var(--fg);
+}

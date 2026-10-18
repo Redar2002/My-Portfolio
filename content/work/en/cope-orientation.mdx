@@ -1,0 +1,39 @@
+{/* Case study — Educational guidance application, COPE (EN). */}
+
+## Context
+
+Internship at **COPE** (Centre for Educational Guidance and Planning) in Rabat, March to June 2025.
+
+## Problem
+
+Educational guidance and planning rely on a lot of changing information: programmes, schools, paths. The team needed a central web tool they could evolve without rewriting everything.
+
+<Todo>specific need expressed by COPE and target users</Todo>
+
+## My role
+
+- Designed and built the REST API with **Laravel Lumen**.
+- Built the user interface with **React**.
+- Set up a modular architecture.
+
+## Architecture
+
+<Architecture />
+
+## Technical choices and trade-offs
+
+- **Lumen rather than full Laravel.** A lightweight micro-framework suited to a pure API, at the cost of features you add yourself (sessions, views).
+- **Separate API and front end.** The React front end consumes JSON from the API: each side evolves independently, but CORS and authentication must be handled.
+- **One module per domain.** Each functional domain has its own module, which eases maintenance and onboarding.
+
+## Outcomes
+
+- Web application delivered at the end of the internship: REST API and React interface.
+- <Todo>modules or features delivered</Todo>
+- <Todo>users or feedback from the COPE team</Todo>
+
+## Limitations and next steps
+
+- Add automated tests on the API endpoints.
+- Document the API (OpenAPI) to ease handover.
+- Add a dashboard to monitor guidance outcomes.
