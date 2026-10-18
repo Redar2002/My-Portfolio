@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import Script from "next/script";
 import "../globals.css";
 import { inter, jetbrains, serif } from "@/lib/fonts";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
@@ -47,9 +48,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 
   return (
     <html lang={locale} data-theme="dark" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable} ${serif.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       {/* suppressHydrationWarning : certaines extensions de navigateur ajoutent des attributs à <body> avant React. */}
       <body id="top" className="min-h-dvh" suppressHydrationWarning>
         <a
@@ -58,6 +56,9 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         >
           {dict.a11y.skip}
         </a>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeScript}
+        </Script>
         <Background />
         <MotionProvider>
           <Header locale={locale} dict={dict} />
