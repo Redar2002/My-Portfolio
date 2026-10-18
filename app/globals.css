@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+/* Sombre par défaut : tout ce qui n'est pas explicitement en thème clair. */
+@custom-variant dark (&:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *));
 
 /* Jetons de couleur — une seule couleur d'accent, contraste AA vérifié sur chaque fond. */
 :root,

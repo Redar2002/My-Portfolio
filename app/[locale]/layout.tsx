@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import Script from "next/script";
 import "../globals.css";
 import { inter, jetbrains, serif } from "@/lib/fonts";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
@@ -11,6 +10,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Background } from "@/components/layout/Background";
+import { ThemeScript } from "@/components/layout/ThemeScript";
 
 export const dynamicParams = false;
 
@@ -38,16 +38,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-// Applique le thème enregistré avant le premier rendu (évite le flash). Sombre par défaut.
-const themeScript = `try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=t==="light"?"light":"dark"}catch(e){}`;
-
 export default async function LocaleLayout({ children, params }: { children: ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
 
   return (
-    <html lang={locale} data-theme="dark" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable} ${serif.variable}`}>
+    <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable} ${serif.variable}`}>
+      <head>
+        <ThemeScript />
+      </head>
       {/* suppressHydrationWarning : certaines extensions de navigateur ajoutent des attributs à <body> avant React. */}
       <body id="top" className="min-h-dvh" suppressHydrationWarning>
         <a
@@ -56,9 +56,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         >
           {dict.a11y.skip}
         </a>
-        <Script id="theme-init" strategy="beforeInteractive">
-          {themeScript}
-        </Script>
         <Background />
         <MotionProvider>
           <Header locale={locale} dict={dict} />
