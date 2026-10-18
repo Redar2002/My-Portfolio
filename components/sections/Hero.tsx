@@ -8,7 +8,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [line1, line2] = site.heroTaglines[site.heroTagline][locale];
   return (
     <section aria-labelledby="hero-title" className="relative">
-      <div className="mx-auto max-w-7xl px-5 pt-32 md:px-10 md:pt-40">
+      <div className="page-container pt-32 md:pt-40">
         <h1 id="hero-title">
           <span className="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-fg/85 uppercase md:text-sm">
             <span aria-hidden="true" className="size-2.5 rounded-full bg-accent shadow-[0_0_12px_var(--accent)]" />

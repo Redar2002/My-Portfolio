@@ -3,7 +3,7 @@ import { fr } from "@/content/i18n/fr";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-3xl px-5 py-40 md:px-8">
+    <div className="page-container py-40">
       <p className="font-mono text-sm text-accent">404</p>
       <h1 className="mt-4 font-serif text-6xl">{fr.notFound.title}</h1>
       <p className="mt-4 text-muted">{fr.notFound.text}</p>

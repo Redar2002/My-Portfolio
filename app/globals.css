@@ -93,6 +93,14 @@ body {
   -webkit-box-decoration-break: clone;
 }
 
+/* Conteneur de page commun : même marge gauche/droite partout (≈20 px sur mobile → 120 px sur grand écran). */
+@utility page-container {
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 6vw, 7.5rem);
+}
+
 /* Trame de points du fond */
 .bg-dots {
   background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);

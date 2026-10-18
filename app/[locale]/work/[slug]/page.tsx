@@ -51,7 +51,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
   ] as const;
 
   return (
-    <article className="mx-auto max-w-7xl px-5 pt-32 pb-24 md:px-10 md:pt-40">
+    <article className="page-container pt-32 pb-24 md:pt-40">
       <Link href={`/${locale}#project-${project.slug}`} className="font-mono text-sm text-muted hover:text-fg">
         ← {dict.work.back}
       </Link>
@@ -86,7 +86,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
       </header>
 
       <div className="mt-16 grid gap-12 border-t border-line pt-4 lg:grid-cols-12">
-        <div className="prose-case lg:col-span-8">
+        <div className="prose-case max-w-3xl lg:col-span-8">
           <Content
             components={{
               Architecture: () => (
