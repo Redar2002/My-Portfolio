@@ -29,7 +29,7 @@ export const site = {
 
   /** Mettre `null` tant que le fichier n'existe pas dans /public/cv. */
   cv: {
-    fr: "/cv/reda-laksyer-cv-fr.pdf",
+    fr: "/cv/CV_Reda_Laksyer_BI_FR.pdf",
     en: null,
   } satisfies Localized<string | null>,
 

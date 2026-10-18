@@ -21,7 +21,7 @@ export const stack: StackGroup[] = [
     title: { fr: "IA & analyse", en: "AI & analysis" },
     tools: [
       { name: "Python", projects: ["meeting-intelligence", "elia-forecasting"] },
-      { name: "Pandas", projects: [] },
+      { name: "Pandas", projects: ["elia-forecasting"] },
       { name: "Gemini API", projects: ["meeting-intelligence"] },
       { name: "RAG", projects: ["meeting-intelligence"] },
       { name: "NLP", projects: ["meeting-intelligence"] },

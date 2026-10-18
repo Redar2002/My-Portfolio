@@ -32,7 +32,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     knowsLanguage: ["ar", "fr", "en"],
     knowsAbout: disciplines.flatMap((d) => d.items[locale]),
     alumniOf: [
-      { "@type": "CollegeOrUniversity", name: "ISMAGI — Institut Supérieur de Génie Informatique" },
+      { "@type": "CollegeOrUniversity", name: "ISMAGI — Institut Supérieur de Management, d'Administration et de Génie Informatique" },
       { "@type": "EducationalOrganization", name: "ISTA — Institut Spécialisé de Technologie Appliquée" },
     ],
   };

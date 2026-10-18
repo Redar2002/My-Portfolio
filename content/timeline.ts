@@ -24,7 +24,7 @@ export const timeline: TimelineEntry[] = [
     kind: "education",
     period: "2024 – 2026",
     title: { fr: "Ingénieur d'État en Business Intelligence", en: "State Engineering Degree in Business Intelligence" },
-    org: "ISMAGI — Institut Supérieur de Génie Informatique",
+    org: "ISMAGI — Institut Supérieur de Management, d'Administration et de Génie Informatique",
   },
   {
     kind: "internship",
@@ -38,7 +38,7 @@ export const timeline: TimelineEntry[] = [
     kind: "education",
     period: "2023 – 2024",
     title: { fr: "Licence professionnelle — Internet des objets", en: "Professional Bachelor's — Internet of Things" },
-    org: "ISMAGI — Institut Supérieur de Génie Informatique",
+    org: "ISMAGI — Institut Supérieur de Management, d'Administration et de Génie Informatique",
   },
   {
     kind: "education",

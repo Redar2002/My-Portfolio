@@ -93,7 +93,7 @@ export const projects: Project[] = [
       fr: "Flux import/export suivis sur 5 frontières, prévisions à horizon réglable. [À COMPLÉTER : précision du modèle, ex. MAPE ou RMSE]",
       en: "Import/export flows tracked across 5 borders, forecasts with an adjustable horizon. [TO COMPLETE: model accuracy, e.g. MAPE or RMSE]",
     },
-    tags: ["Python", "API Elia", "Machine Learning", "ARIMA", "Power BI"],
+    tags: ["Python", "Pandas", "API Elia", "Machine Learning", "ARIMA", "Power BI"],
     illustration: "forecast",
   },
   {
