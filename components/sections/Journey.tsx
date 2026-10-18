@@ -22,7 +22,7 @@ export function Journey({ locale, dict }: { locale: Locale; dict: Dictionary }) 
               <p className="font-mono text-[11px] uppercase tracking-wider text-accent">
                 {entry.kind === "internship" ? dict.journey.internship : dict.journey.education}
               </p>
-              <h3 className="mt-1 text-lg font-semibold text-fg">{entry.title[locale]}</h3>
+              <h3 className="mt-1 font-serif text-2xl text-fg md:text-3xl">{entry.title[locale]}</h3>
               <p className="mt-1 text-muted">{entry.org}</p>
               {entry.detail ? (
                 <p className="mt-2 text-sm text-muted">

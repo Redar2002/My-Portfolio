@@ -17,7 +17,7 @@ export function Projects({ locale, dict }: { locale: Locale; dict: Dictionary })
           <li key={p.slug} id={`project-${p.slug}`} className="scroll-mt-24">
             <article aria-labelledby={`${p.slug}-title`} className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
               <Reveal className={`lg:col-span-6 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="rounded-xl border border-line bg-surface-2 p-3 transition-colors hover:border-line-strong">
+                <div className="glass rounded-2xl border border-line p-3 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_40px_var(--glow)]">
                   <ProjectIllustration kind={p.illustration} locale={locale} />
                 </div>
               </Reveal>
@@ -28,7 +28,7 @@ export function Projects({ locale, dict }: { locale: Locale; dict: Dictionary })
                   <span>{p.category[locale]}</span>
                   <StatusBadge status={p.status} dict={dict} />
                 </div>
-                <h3 id={`${p.slug}-title`} className="mt-4 text-2xl font-semibold tracking-tight text-fg md:text-3xl">
+                <h3 id={`${p.slug}-title`} className="mt-4 font-serif text-4xl leading-[1.02] text-fg md:text-5xl">
                   {p.title[locale]}
                 </h3>
                 <p className="mt-2 text-sm text-muted">
@@ -62,7 +62,7 @@ export function Projects({ locale, dict }: { locale: Locale; dict: Dictionary })
 
                 <Link
                   href={`/${locale}/work/${p.slug}`}
-                  className="group mt-8 inline-flex items-center gap-2 font-medium text-accent"
+                  className="btn btn-secondary group mt-10 h-11! px-5! text-sm"
                 >
                   {dict.projects.caseStudy}
                   <span className="sr-only"> : {p.title[locale]}</span>

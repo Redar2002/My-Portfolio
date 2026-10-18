@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { inter, jetbrains } from "@/lib/fonts";
+import { inter, jetbrains, serif } from "@/lib/fonts";
 import { fr } from "@/content/i18n/fr";
 import { en } from "@/content/i18n/en";
 
@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 export default function GlobalNotFound() {
   return (
-    <html lang="fr" data-theme="dark" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="grid min-h-dvh place-items-center px-5" suppressHydrationWarning>
+    <html lang="fr" data-theme="dark" className={`${inter.variable} ${jetbrains.variable} ${serif.variable}`}>
+      <body className="grid min-h-dvh place-items-center bg-bg px-5" suppressHydrationWarning>
         <main className="max-w-xl">
           <p className="font-mono text-sm text-accent">404</p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight">{fr.notFound.title}</h1>
+          <h1 className="mt-4 font-serif text-6xl">{fr.notFound.title}</h1>
           <p className="mt-2 text-muted" lang="en">
             {en.notFound.title}
           </p>

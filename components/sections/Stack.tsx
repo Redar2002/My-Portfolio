@@ -37,7 +37,7 @@ export function StackExplorer({ locale, dict }: { locale: Locale; dict: Dictiona
         })}
       </div>
 
-      <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
         {stack.map((group) => (
           <div key={group.id} className="bg-bg p-6">
             <h3 className="font-mono text-xs uppercase tracking-wider text-accent">{group.title[locale]}</h3>

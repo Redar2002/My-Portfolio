@@ -2,13 +2,14 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import "../globals.css";
-import { inter, jetbrains } from "@/lib/fonts";
+import { inter, jetbrains, serif } from "@/lib/fonts";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/layout/MotionProvider";
+import { Background } from "@/components/layout/Background";
 
 export const dynamicParams = false;
 
@@ -45,7 +46,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const dict = getDictionary(locale);
 
   return (
-    <html lang={locale} data-theme="dark" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable}`}>
+    <html lang={locale} data-theme="dark" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable} ${serif.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
@@ -57,6 +58,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         >
           {dict.a11y.skip}
         </a>
+        <Background />
         <MotionProvider>
           <Header locale={locale} dict={dict} />
           <main id="main" tabIndex={-1} className="outline-none">

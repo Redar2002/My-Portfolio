@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export function Method({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <Section id="method" index="04" title={dict.method.title} intro={dict.method.intro}>
-      <ol className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2 lg:grid-cols-5">
+      <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-5">
         {methodSteps.map((step, i) => (
           <Reveal as="li" key={i} delay={i * 0.05} className="flex flex-col bg-bg p-6">
             <span className="font-mono text-3xl font-light text-accent" aria-hidden="true">
@@ -39,7 +39,7 @@ export function Method({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <ul className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {principles.map((p, i) => (
           <Reveal as="li" key={i} delay={i * 0.05} className="border-l-2 border-accent pl-5">
-            <p className="text-lg leading-snug font-medium text-fg">{locale === "fr" ? `« ${p.fr} »` : `“${p.en}”`}</p>
+            <p className="font-serif text-2xl leading-tight text-fg italic">{locale === "fr" ? `« ${p.fr} »` : `“${p.en}”`}</p>
           </Reveal>
         ))}
       </ul>

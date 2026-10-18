@@ -14,7 +14,7 @@ export const en: Dictionary = {
     closeMenu: "Close menu",
     themeToLight: "Switch to light theme",
     themeToDark: "Switch to dark theme",
-    switchLanguage: "Lire en français",
+    switchLanguage: "Language",
     external: "(opens in a new tab)",
   },
   nav: {
@@ -33,8 +33,10 @@ export const en: Dictionary = {
     ctaProjects: "View my projects",
     ctaContact: "Get in touch",
     availability: "Open to Data Analyst, BI Engineer and Data/AI Engineer roles — Morocco and international.",
-    pipelineLabel: "Value chain",
-    pipeline: ["source", "etl", "data mart", "model", "kpi", "decision"],
+    pipelineLabel: "From raw flow to decision",
+    stages: ["Sources", "ETL & Data Mart", "Models & analysis", "KPIs & decisions"],
+    tags: ["Business Intelligence", "Power BI", "ETL & Data Marts", "RAG & LLMs"],
+    scroll: "Scroll to explore",
   },
   skills: {
     title: "Skills",

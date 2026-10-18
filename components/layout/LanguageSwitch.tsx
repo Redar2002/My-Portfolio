@@ -2,24 +2,31 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Locale } from "@/lib/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 
-/** Lien vers la même page dans l'autre langue. */
+/** Sélecteur FR / EN : renvoie vers la même page dans l'autre langue. */
 export function LanguageSwitch({ locale, label }: { locale: Locale; label: string }) {
   const pathname = usePathname() ?? `/${locale}`;
-  const target: Locale = locale === "fr" ? "en" : "fr";
-  const href = pathname.replace(/^\/(fr|en)(?=\/|$)/, `/${target}`);
 
   return (
-    <Link
-      href={href}
-      hrefLang={target}
-      lang={target}
-      aria-label={label}
-      title={label}
-      className="grid h-9 place-items-center rounded-md border border-line px-2.5 font-mono text-xs uppercase text-muted transition-colors hover:border-line-strong hover:text-fg"
-    >
-      {target}
-    </Link>
+    <div role="group" aria-label={label} className="flex items-center gap-1 rounded-full border border-line p-1">
+      {locales.map((l) => {
+        const active = l === locale;
+        return (
+          <Link
+            key={l}
+            href={pathname.replace(/^\/(fr|en)(?=\/|$)/, `/${l}`)}
+            hrefLang={l}
+            lang={l}
+            aria-current={active ? "true" : undefined}
+            className={`grid h-7 min-w-9 place-items-center rounded-full px-2 font-mono text-[11px] font-medium uppercase transition-colors ${
+              active ? "bg-fg text-bg" : "text-muted hover:text-fg"
+            }`}
+          >
+            {l}
+          </Link>
+        );
+      })}
+    </div>
   );
 }

@@ -11,7 +11,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   const locale = isLocale(raw) ? raw : "fr";
   return renderOg({
     eyebrow: `${site.name} — ${site.title[locale]}`,
-    title: site.heroTaglines[site.heroTagline][locale],
+    title: site.heroTaglines[site.heroTagline][locale].join(" "),
     footer: site.specialties[locale],
   });
 }

@@ -24,7 +24,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         <div className="mt-3 flex flex-wrap items-center gap-4">
           <a
             href={`mailto:${contact.email}`}
-            className="text-2xl font-semibold tracking-tight break-all text-fg decoration-accent decoration-2 underline-offset-8 hover:underline sm:text-4xl md:text-5xl"
+            className="font-serif text-4xl break-all text-fg italic decoration-accent decoration-1 underline-offset-8 hover:text-accent sm:text-6xl md:text-7xl"
           >
             {contact.email}
           </a>
@@ -61,7 +61,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
                   href={cv.href}
                   download
                   hrefLang={cv.lang}
-                  className="inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 font-medium text-accent-fg transition-opacity hover:opacity-90"
+                  className="btn btn-primary h-11! px-5! text-sm"
                 >
                   <span aria-hidden="true">↓</span> {cv.label} <span className="font-mono text-xs opacity-80">PDF</span>
                 </a>

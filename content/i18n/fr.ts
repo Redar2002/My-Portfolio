@@ -12,7 +12,7 @@ export const fr = {
     closeMenu: "Fermer le menu",
     themeToLight: "Passer au thème clair",
     themeToDark: "Passer au thème sombre",
-    switchLanguage: "Read in English",
+    switchLanguage: "Langue",
     external: "(nouvel onglet)",
   },
   nav: {
@@ -31,8 +31,10 @@ export const fr = {
     ctaProjects: "Voir mes projets",
     ctaContact: "Me contacter",
     availability: "Ouvert aux postes Data Analyst, BI Engineer, Data/AI Engineer — Maroc et international.",
-    pipelineLabel: "Chaîne de valeur",
-    pipeline: ["source", "etl", "data mart", "modèle", "kpi", "décision"],
+    pipelineLabel: "Du flux brut à la décision",
+    stages: ["Sources", "ETL & Data Mart", "Modèles & analyse", "KPI & décisions"],
+    tags: ["Business Intelligence", "Power BI", "ETL & Data Marts", "RAG & LLM"],
+    scroll: "Défiler pour explorer",
   },
   skills: {
     title: "Compétences",

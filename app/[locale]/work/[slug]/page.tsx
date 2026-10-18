@@ -51,7 +51,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
   ] as const;
 
   return (
-    <article className="mx-auto max-w-6xl px-5 pt-12 pb-24 md:px-8 md:pt-20">
+    <article className="mx-auto max-w-7xl px-5 pt-32 pb-24 md:px-10 md:pt-40">
       <Link href={`/${locale}#project-${project.slug}`} className="font-mono text-sm text-muted hover:text-fg">
         ← {dict.work.back}
       </Link>
@@ -61,7 +61,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
           <p className="font-mono text-sm text-accent">
             02.{index + 1} — {project.category[locale]}
           </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance text-fg md:text-6xl">{project.title[locale]}</h1>
+          <h1 className="mt-4 font-serif text-5xl leading-[0.95] text-balance text-fg md:text-7xl">{project.title[locale]}</h1>
           <p className="mt-6 text-lg leading-relaxed text-muted">{project.role[locale]}</p>
           <dl className="mt-8 grid gap-4 sm:grid-cols-2">
             {facts.map(([label, value]) => (
@@ -115,7 +115,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
       <nav aria-label={dict.work.next} className="mt-24 border-t border-line pt-10">
         <Link href={`/${locale}/work/${next.slug}`} className="group block">
           <span className="font-mono text-xs uppercase tracking-wider text-muted">{dict.work.next}</span>
-          <span className="mt-2 flex items-center gap-3 text-2xl font-semibold tracking-tight text-fg group-hover:text-accent md:text-4xl">
+          <span className="mt-2 flex items-center gap-3 font-serif text-4xl text-fg italic group-hover:text-accent md:text-6xl">
             {next.title[locale]}
             <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
               →

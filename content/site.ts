@@ -40,12 +40,13 @@ export const site = {
   ] satisfies { name: Localized; level: Localized }[],
 
   /**
-   * Trois propositions de promesse pour le hero. `heroTagline` choisit celle qui s'affiche (0, 1 ou 2).
+   * Trois propositions de promesse pour le hero, chacune sur deux lignes
+   * (la seconde s'affiche en italique, couleur d'accent). `heroTagline` choisit celle qui s'affiche (0, 1 ou 2).
    */
   heroTaglines: [
-    { fr: "De la donnée brute à l'indicateur qui tranche.", en: "From raw data to the metric that settles it." },
-    { fr: "Des chiffres qu'on peut défendre en réunion.", en: "Numbers you can defend in the meeting room." },
-    { fr: "Je rends la donnée fiable, puis lisible.", en: "I make data reliable, then readable." },
-  ] satisfies Localized[],
+    { fr: ["De la donnée brute", "à l'indicateur qui tranche."], en: ["From raw data", "to the metric that settles it."] },
+    { fr: ["Des chiffres", "qu'on peut défendre."], en: ["Numbers", "you can defend."] },
+    { fr: ["Je rends la donnée fiable,", "puis lisible."], en: ["I make data reliable,", "then readable."] },
+  ] satisfies Localized<[string, string]>[],
   heroTagline: 0,
 };

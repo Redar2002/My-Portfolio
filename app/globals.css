@@ -5,30 +5,36 @@
 /* Jetons de couleur — une seule couleur d'accent, contraste AA vérifié sur chaque fond. */
 :root,
 [data-theme="dark"] {
-  --bg: #06080b;
-  --surface: #0c1016;
-  --surface-2: #121821;
-  --line: #1e2631;
-  --line-strong: #2d3744;
-  --fg: #e8edf3;
-  --muted: #9aa5b4;
-  --accent: #3d9bff;
-  --accent-fg: #03101f;
-  --accent-soft: rgb(61 155 255 / 0.12);
+  --bg: #070b10;
+  --surface: #0c121a;
+  --surface-2: #111924;
+  --line: #1b2531;
+  --line-strong: #2a3746;
+  --fg: #eaf0f5;
+  --muted: #9aa8b6;
+  --accent: #5fd4ea;
+  --accent-fg: #03141a;
+  --accent-soft: rgb(95 212 234 / 0.1);
+  --glow: rgb(95 212 234 / 0.18);
+  --contour: rgb(120 160 190 / 0.13);
+  --dot: rgb(150 180 205 / 0.16);
   color-scheme: dark;
 }
 
 [data-theme="light"] {
-  --bg: #f7f9fc;
+  --bg: #f6f8fa;
   --surface: #ffffff;
-  --surface-2: #eef2f7;
-  --line: #dde3ea;
-  --line-strong: #c3ccd7;
-  --fg: #0a0f16;
-  --muted: #4a5564;
-  --accent: #0a5bd3;
+  --surface-2: #edf1f5;
+  --line: #dbe2e9;
+  --line-strong: #c1ccd7;
+  --fg: #0a1118;
+  --muted: #4a5664;
+  --accent: #0b6e80;
   --accent-fg: #ffffff;
-  --accent-soft: rgb(10 91 211 / 0.08);
+  --accent-soft: rgb(11 110 128 / 0.08);
+  --glow: rgb(11 110 128 / 0.12);
+  --contour: rgb(40 80 110 / 0.1);
+  --dot: rgb(40 70 100 / 0.14);
   color-scheme: light;
 }
 
@@ -45,6 +51,7 @@
   --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
 }
 
 html {
@@ -54,7 +61,7 @@ html {
 }
 
 body {
-  background: var(--bg);
+  /* Pas de fond ici : le fond décoratif fixe (z-index négatif) doit rester visible. */
   color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -85,13 +92,55 @@ body {
   -webkit-box-decoration-break: clone;
 }
 
-/* Grille de fond discrète */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, var(--line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse at 30% 20%, black 10%, transparent 70%);
+/* Trame de points du fond */
+.bg-dots {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+/* Boutons à ombre décalée */
+.btn {
+  display: inline-flex;
+  height: 3.25rem;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 0.6rem;
+  padding: 0 1.75rem;
+  font-weight: 500;
+  border: 1px solid var(--fg);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.btn-primary {
+  background: var(--fg);
+  color: var(--bg);
+  box-shadow: 3px 3px 0 0 var(--line-strong);
+}
+.btn-secondary {
+  background: var(--bg);
+  color: var(--fg);
+  box-shadow: 3px 3px 0 0 var(--fg);
+}
+.btn:hover {
+  transform: translate(-1px, -1px);
+}
+.btn-primary:hover {
+  box-shadow: 4px 4px 0 0 var(--accent);
+}
+.btn-secondary:hover {
+  box-shadow: 4px 4px 0 0 var(--accent);
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 transparent;
+}
+
+/* Verre dépoli des cartes et de la navigation */
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Animations des illustrations SVG */

@@ -6,7 +6,7 @@ type Props = { id: string; index: string; title: string; intro?: string; childre
 export function Section({ id, index, title, intro, children }: Props) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="border-t border-line py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <SectionHeader id={`${id}-title`} index={index} title={title} intro={intro} />
         {children}
       </div>

@@ -47,6 +47,7 @@ content/                    ← TOUT le contenu éditable est ici
 lib/                        i18n, SEO, polices, chargement MDX, image OG
 public/cv/                  CV PDF
 public/work/elia/           captures réelles du projet Elia
+public/topography.svg       courbes de niveau du fond (générées)
 ```
 
 ## Modifier le contenu
@@ -72,4 +73,5 @@ public/work/elia/           captures réelles du projet Elia
 - Lien « Aller au contenu », navigation clavier complète, motifs ARIA `tabs`, contrastes AA.
 - `prefers-reduced-motion` respecté (CSS et Framer Motion).
 - Polices auto-hébergées, illustrations en SVG, pages statiques.
-  Lighthouse (local, mobile) : 96–99 performance, 100 accessibilité, bonnes pratiques et SEO.
+- Animation du hero en canvas : démarre après le chargement, 30 images/s, pause hors écran.
+  Lighthouse (local) : bureau 100 ; mobile simulé 91–96 en performance (accueil), 100 en accessibilité, bonnes pratiques et SEO.

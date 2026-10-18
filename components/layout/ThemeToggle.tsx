@@ -31,7 +31,7 @@ export function ThemeToggle({ labels }: { labels: Labels }) {
       onClick={toggle}
       aria-label={isDark ? labels.toLight : labels.toDark}
       title={isDark ? labels.toLight : labels.toDark}
-      className="grid size-9 place-items-center rounded-md border border-line text-muted transition-colors hover:border-line-strong hover:text-fg"
+      className="grid size-9 place-items-center rounded-full border border-line text-muted transition-colors hover:border-line-strong hover:text-fg"
     >
       {isDark ? (
         <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8">
