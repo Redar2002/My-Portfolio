@@ -10,6 +10,7 @@ import {
 import { ArrowUpRight } from 'lucide-react'
 import { scrollToId } from '../lib/utils'
 import { profile } from '../data/profile'
+import ContactCurtain from './ContactCurtain'
 
 const links = [
   { label: 'À propos', id: 'about' },
@@ -193,6 +194,8 @@ export default function Navbar() {
   const [hovered, setHovered] = useState(null)
   const active = useActiveSection()
 
+  const [curtain, setCurtain] = useState(false)
+  const contactBtn = useRef(null)
   const navigating = useRef(false)
   const navTimer = useRef(null)
 
@@ -205,6 +208,7 @@ export default function Navbar() {
     // Pendant un défilement lancé depuis la navbar, elle reste visible
     if (navigating.current) return setHidden(false)
     setHidden(y > prev && y > 300)
+    if (Math.abs(y - prev) > 4) setCurtain(false)
   })
 
   useEffect(() => {
@@ -306,14 +310,20 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Magnetic className="hidden md:block">
               <button
-                onClick={() => go('contact')}
+                ref={contactBtn}
+                onClick={() => setCurtain((c) => !c)}
+                aria-expanded={curtain}
                 className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] py-2 pl-5 pr-2 text-sm font-semibold text-[#0d1116] shadow-[0_8px_30px_-8px_rgba(0,223,143,0.7)]"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 <span className="relative">Me contacter</span>
-                <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#0d1116] text-white transition-transform duration-300 group-hover:rotate-45">
+                <motion.span
+                  animate={{ rotate: curtain ? 135 : 0 }}
+                  transition={spring}
+                  className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#0d1116] text-white"
+                >
                   <ArrowUpRight size={15} />
-                </span>
+                </motion.span>
               </button>
             </Magnetic>
             <div className="md:hidden">
@@ -331,6 +341,16 @@ export default function Navbar() {
       </motion.header>
 
       <AnimatePresence>{open && <MobileMenu active={active} onNavigate={go} />}</AnimatePresence>
+
+      <ContactCurtain
+        open={curtain}
+        anchor={contactBtn}
+        onClose={() => setCurtain(false)}
+        onSeeContact={() => {
+          setCurtain(false)
+          go('contact')
+        }}
+      />
     </>
   )
 }
