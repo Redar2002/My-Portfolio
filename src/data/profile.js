@@ -1,12 +1,12 @@
 export const profile = {
   firstName: 'Reda',
   lastName: 'Laksyer',
-  role: 'Analyste Business Intelligence',
-  shortRole: 'BI Analyst & Developer',
-  email: 'Laksyerreda@gmail.com',
+  role: 'Ingénieur BI & Data',
+  shortRole: 'BI & Data Engineer',
+  email: 'laksyerreda@gmail.com',
   phone: '+212 6 75 57 87 20',
   phoneHref: 'tel:+212675578720',
-  location: 'Témara, Maroc',
+  location: 'Rabat, Maroc',
   cv: '/cv-reda-laksyer.pdf',
   photo: '/reda.jpg',
   socials: [
@@ -17,142 +17,135 @@ export const profile = {
   ],
 }
 
-export const skills = [
-  'SQL',
-  'Power BI',
-  'SSIS',
-  'SSAS',
-  'Python',
-  'OpenCV',
-  'YOLO',
-  'ReactJS',
-  'Laravel Lumen',
-  'Tailwind CSS',
-  'ETL',
-  'OLAP',
-  'Modélisation multidimensionnelle',
-  'Agile (Scrum)',
-  'SSMS',
-  'Raspberry Pi',
+export const skillGroups = [
+  {
+    title: 'Data & BI',
+    items: ['SQL', 'SQL Server', 'SSIS', 'SSAS', 'Power BI', 'Tableau', 'Data Warehouse', 'Data Mart', 'ETL / ELT', 'Modélisation décisionnelle', 'KPI'],
+  },
+  {
+    title: 'Data Science & IA',
+    items: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Machine Learning', 'NLP', 'RAG', 'LLM (API Gemini)', 'MCP'],
+  },
+  {
+    title: 'Développement',
+    items: ['PHP', 'Laravel / Lumen', 'API REST', 'React', 'Node.js', 'HTML', 'CSS', 'Bootstrap', 'Tailwind CSS'],
+  },
+  {
+    title: 'Outils',
+    items: ['Git', 'GitHub', 'Docker', 'Postman'],
+  },
 ]
 
 export const softSkills = [
-  'Gestion de projet',
-  'Communication',
-  'Travail en équipe',
-  'Leadership',
-  'Pensée critique',
-  'Gestion du temps',
+  "Esprit d'analyse",
+  'Rigueur',
+  'Autonomie',
+  "Esprit d'équipe",
+  "Capacité d'apprentissage",
 ]
 
-export const languages = ['Français', 'Anglais', 'Arabe']
+export const languages = [
+  { name: 'Arabe', level: 'Maternelle' },
+  { name: 'Français', level: 'Courant' },
+  { name: 'Anglais', level: 'Professionnel' },
+]
 
 export const education = [
   {
-    year: '2025',
-    title: '2ᵉ année cycle en Business Intelligence',
-    school: "ISMAGI — Institut Supérieur de Génie Informatique",
+    year: '2024 — 2026',
+    title: "Diplôme d'Ingénieur d'État — Business Intelligence",
+    school: "ISMAGI — Institut Supérieur de Management, d'Administration et de Génie Informatique, Rabat",
     detail: 'Spécialité BI',
   },
   {
-    year: '2024',
-    title: 'Licence professionnelle en Internet des Objets',
-    school: "ISMAGI — Institut Supérieur de Génie Informatique",
+    year: '2023 — 2024',
+    title: 'Licence professionnelle — Internet des Objets',
+    school: "ISMAGI — Institut Supérieur de Management, d'Administration et de Génie Informatique, Rabat",
     detail: 'Spécialité IoT',
   },
   {
-    year: '2023',
-    title: 'Technicien Spécialisé en Développement Digital',
-    school: "ISTA — Institut Spécialisé de Technologie Appliquée",
+    year: '2021 — 2023',
+    title: 'Technicien Spécialisé — Développement Digital',
+    school: 'ISTA — Institut Spécialisé de Technologie Appliquée',
     detail: 'Spécialité Développement',
   },
 ]
 
 export const experiences = [
   {
-    year: '2024 — 2025',
-    title: 'Data Mart de Gestion Hospitalière',
-    place: 'Projet BI — Formation Business Intelligence & Data Science',
+    year: 'Janv. 2026 — Juin 2026',
+    title: 'Stagiaire IA & Analyse de données (PFE)',
+    place: 'Inspirigence — Plateforme de Meeting Intelligence',
     points: [
-      'Modélisation en étoile : FactConsultation + DimDate, DimMédecin, DimService, DimPatient',
-      'ETL avec SSIS depuis un système OLTP, cube OLAP avec SSAS',
-      'Tableau de bord Power BI interactif pour la direction médicale',
+      "Conception et développement d'une plateforme d'IA qui analyse les réunions et génère automatiquement synthèses, décisions, actions et KPI",
+      "Pipeline NLP / RAG en Python s'appuyant sur l'API Gemini (LLM) pour extraire les informations clés des échanges",
+      'KPI des réunions visualisés dans Power BI, outils connectés via le protocole MCP (Model Context Protocol)',
     ],
   },
   {
-    year: '2023 — 2024',
-    title: 'Système robotique de détection & manipulation',
-    place: 'Projet IoT — Bras VEX, robot mobile, convoyeur, caméra',
+    year: 'Mars 2025 — Juin 2025',
+    title: 'Stagiaire Développeur Web',
+    place: "COPE — Application d'orientation et de planification éducative",
     points: [
-      'Détection temps réel avec YOLO + OpenCV',
-      'Orchestration Python, Raspberry Pi & VEXcode',
-      '95 % de précision en détection, 90 % en manipulation',
-    ],
-  },
-  {
-    year: '2022 — 2023',
-    title: 'Stage en développement web',
-    place: "COPE — Centre d'Orientation et de Planification de l'Éducation, Rabat",
-    points: [
-      'API REST performante avec Laravel Lumen',
-      'Interface dynamique et réactive en ReactJS',
-      'Architecture modulaire pour la maintenance et l’évolution',
+      "Développement d'une application d'orientation et de planification éducative à l'architecture modulaire",
+      'Conception et implémentation d’une API REST avec Laravel Lumen, consommée par une interface ReactJS',
     ],
   },
 ]
 
 export const projects = [
   {
+    id: 'meeting',
+    category: 'IA générative · PFE',
+    title: 'Meeting Intelligence',
+    description:
+      "Plateforme d'IA qui analyse les réunions et génère automatiquement les synthèses, décisions, actions et KPI. Pipeline NLP / RAG en Python avec l'API Gemini, KPI suivis dans Power BI et outils connectés via MCP.",
+    tags: ['Python', 'API Gemini', 'NLP', 'RAG', 'MCP', 'Power BI'],
+    image:
+      'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop',
+    url: 'https://github.com/Redar2002',
+  },
+  {
+    id: 'energy',
+    category: 'Machine Learning · Data Viz',
+    title: 'Prévision des flux électriques en Belgique',
+    description:
+      "Projet de fin d'année : collecte des données via l'API Elia, entraînement de modèles de Machine Learning pour prévoir les flux électriques transfrontaliers, et tableau de bord interactif de suivi et d'analyse des flux.",
+    tags: ['Python', 'Pandas', 'Machine Learning', 'API Elia', 'Power BI'],
+    image: '/projects/carte.png',
+    url: 'https://github.com/Redar2002/dashboard',
+  },
+  {
     id: 'hospital',
     category: 'Business Intelligence',
-    title: 'Data Mart Hospitalier',
+    title: 'Data Mart — Gestion hospitalière',
     description:
-      "Conception d'un Data Mart pour le suivi et l'analyse des consultations médicales : modèle en étoile, mesures clés (nombre, durée et coût des consultations), dictionnaire de données et matrice d'alignement stratégique, alimentés par un ETL SSIS, un cube SSAS et un dashboard Power BI.",
-    tags: ['SQL Server', 'SSIS', 'SSAS', 'Power BI', 'OLAP'],
+      "Data Mart modélisé et alimenté par des flux ETL SSIS, avec un cube SSAS pour l'analyse multidimensionnelle, et des rapports Power BI sur les consultations médicales et les indicateurs de gestion hospitalière.",
+    tags: ['SQL Server', 'SSIS', 'SSAS', 'Power BI'],
     image:
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
     url: 'https://github.com/Redar2002',
   },
   {
-    id: 'energy',
-    category: 'Data Visualisation',
-    title: 'Dashboard Flux Énergétiques',
+    id: 'cope',
+    category: 'Développement Web · Stage',
+    title: "Plateforme d'Orientation COPE",
     description:
-      "Tableau de bord interactif d'analyse des échanges d'électricité transfrontaliers : carte des interconnexions, évolution horaire des flux, balance import / export, statistiques et prévisions de tendances.",
-    tags: ['Python', 'Streamlit', 'Plotly', 'Prévision'],
-    image: '/projects/carte.png',
-    url: 'https://github.com/Redar2002/dashboard',
+      "Application d'orientation et de planification éducative à l'architecture modulaire : API REST Laravel Lumen côté back-end, consommée par une interface ReactJS.",
+    tags: ['PHP', 'Laravel Lumen', 'API REST', 'ReactJS'],
+    image:
+      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
+    url: 'https://github.com/Redar2002/projetStage',
   },
   {
     id: 'robot',
     category: 'IoT & Computer Vision',
     title: 'Robot de Détection YOLO',
     description:
-      "Système robotisé de détection, saisie et transport automatisé d'objets avec un bras VEX, un robot mobile, un convoyeur et une caméra embarquée. Validé en conditions réelles : 95 % de précision en détection et 90 % en manipulation.",
-    tags: ['Python', 'YOLO', 'OpenCV', 'Raspberry Pi', 'VEXcode'],
+      "Système robotisé de détection, saisie et transport automatisé d'objets avec un bras VEX, un robot mobile, un convoyeur et une caméra embarquée. 95 % de précision en détection et 90 % en manipulation.",
+    tags: ['Python', 'YOLO', 'OpenCV', 'Raspberry Pi'],
     image:
       'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop',
-    url: 'https://github.com/Redar2002',
-  },
-  {
-    id: 'cope',
-    category: 'Développement Web',
-    title: "Plateforme d'Orientation COPE",
-    description:
-      "Application web dédiée à l'orientation et à la planification de l'éducation, réalisée en stage : API REST Laravel Lumen côté back-end, interface ReactJS dynamique côté front-end, architecture modulaire.",
-    tags: ['ReactJS', 'Laravel Lumen', 'REST API', 'MySQL'],
-    image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
-    url: 'https://github.com/Redar2002/projetStage',
-  },
-  {
-    id: 'shop',
-    category: 'Développement Web',
-    title: 'Application E-commerce',
-    description:
-      'Boutique en ligne interactive avec gestion des produits, panier et authentification des utilisateurs (inscription / connexion).',
-    tags: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
-    image: '/projects/ecommerce.png',
     url: 'https://github.com/Redar2002',
   },
 ]
@@ -160,26 +153,26 @@ export const projects = [
 export const stages = [
   {
     title: 'BRIEFING',
-    text: "Comprendre les objectifs métier, les utilisateurs et les indicateurs attendus. Je construis une matrice d'alignement stratégique pour relier chaque KPI à une décision.",
+    text: 'Comprendre les objectifs métier, les utilisateurs et les indicateurs attendus, pour relier chaque KPI à une décision concrète.',
   },
   {
-    title: 'ANALYSE',
-    text: 'Audit des sources (OLTP, fichiers, API), qualité et volumétrie des données, rédaction du dictionnaire de données.',
+    title: 'COLLECTE',
+    text: 'Audit et intégration des sources (bases OLTP, fichiers, API comme Elia), contrôle de la qualité et de la volumétrie des données.',
   },
   {
     title: 'MODÉLISATION',
-    text: 'Conception multidimensionnelle en étoile ou en flocon : tables de faits, dimensions, granularité et mesures clés.',
+    text: 'Conception décisionnelle en étoile ou en flocon : Data Warehouse / Data Mart, tables de faits, dimensions, granularité et mesures clés.',
   },
   {
-    title: 'ETL',
-    text: "Extraction, transformation et chargement avec SSIS ou Python : nettoyage, historisation et automatisation des flux.",
+    title: 'ETL / ELT',
+    text: 'Flux d’extraction, transformation et chargement avec SSIS ou Python (Pandas) : nettoyage, historisation et automatisation.',
   },
   {
-    title: 'OLAP & DASHBOARDS',
-    text: 'Cubes SSAS pour l’analyse multidimensionnelle et tableaux de bord Power BI clairs, interactifs et orientés décision.',
+    title: 'ANALYSE & IA',
+    text: 'Cubes SSAS, modèles de Machine Learning pour la prévision, et IA générative (NLP, RAG, LLM) pour extraire de la valeur du texte.',
   },
   {
-    title: 'LIVRAISON',
-    text: 'Tests, validation avec les métiers, documentation et itérations Agile (Scrum) pour faire évoluer la solution.',
+    title: 'DASHBOARDS',
+    text: 'Tableaux de bord Power BI ou Tableau clairs, interactifs et orientés décision, puis validation avec les métiers et itérations.',
   },
 ]

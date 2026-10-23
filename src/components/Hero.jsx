@@ -124,10 +124,10 @@ export default function Hero() {
           </h1>
 
           <motion.p {...reveal(0.5)} className="mt-8 max-w-xl text-base leading-relaxed text-gray-400 sm:text-lg">
-            Je suis <span className="font-semibold text-white">{profile.firstName} {profile.lastName}</span>, 23 ans.
-            Je transforme des données brutes en décisions claires : Data Marts, pipelines ETL,
-            cubes OLAP et tableaux de bord Power BI — avec un solide bagage en développement
-            web (ReactJS, Laravel) et en IoT / vision par ordinateur.
+            Je suis <span className="font-semibold text-white">{profile.firstName} {profile.lastName}</span>,
+            ingénieur d’État en Business Intelligence & analyse de données. Je transforme les
+            données en indicateurs fiables : Data Marts, flux ETL, tableaux de bord Power BI et
+            solutions d’IA générative (NLP, RAG, LLM) en Python.
           </motion.p>
 
           <motion.div {...reveal(0.65)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -161,7 +161,8 @@ export default function Hero() {
             <span>Power BI</span>
             <span>SSIS / SSAS</span>
             <span>Python</span>
-            <span>ReactJS</span>
+            <span>Machine Learning</span>
+            <span>LLM / RAG</span>
           </motion.div>
         </div>
 

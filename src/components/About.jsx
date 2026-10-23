@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import { fadeUp } from '../lib/utils'
-import { languages, skills, softSkills } from '../data/profile'
+import { languages, skillGroups, softSkills } from '../data/profile'
 
 const stats = [
-  { value: '95%', label: 'Précision détection YOLO' },
-  { value: '3', label: 'Diplômes en informatique' },
-  { value: '100%', label: 'Engagement' },
+  { value: '2026', label: "Ingénieur d'État ISMAGI" },
+  { value: '2', label: 'Stages en entreprise' },
+  { value: '30+', label: 'Technologies maîtrisées' },
 ]
 
 export default function About() {
@@ -21,16 +21,16 @@ export default function About() {
             <span className="text-[#00df8f]">.</span>
           </motion.h2>
           <motion.p {...fadeUp} className="mt-8 text-base leading-relaxed text-gray-400 sm:text-lg">
-            Analyste Business Intelligence en 2ᵉ année de cycle BI à l’ISMAGI, j’ai acquis des
-            compétences solides en développement informatique, en intégration et gestion de
-            données, ainsi qu’en analyse et visualisation. Je conçois des solutions décisionnelles
-            de bout en bout avec <span className="text-white">SSIS, SSAS et Power BI</span>.
+            Ingénieur d’État en informatique, spécialisé en Business Intelligence et en analyse de
+            données, diplômé de l’ISMAGI (2026). J’ai de l’expérience en conception de Data Marts et
+            de flux ETL (<span className="text-white">SQL Server, SSIS, SSAS</span>), en création de
+            tableaux de bord <span className="text-white">Power BI</span> et en développement de
+            solutions d’<span className="text-white">IA générative (NLP, RAG, LLM)</span> avec Python.
           </motion.p>
           <motion.p {...fadeUp} className="mt-5 text-base leading-relaxed text-gray-400 sm:text-lg">
-            Mon parcours multidisciplinaire — développement digital, Internet des Objets puis BI —
-            me permet de relier le terrain, le code et la décision. Curieux et passionné, je
-            souhaite mettre mes compétences au service de projets innovants et contribuer
-            activement à la réussite des objectifs de l’entreprise.
+            Mon parcours — développement digital, Internet des Objets puis Business Intelligence —
+            me permet de relier le code, la donnée et la décision. Je transforme les données en
+            indicateurs fiables pour améliorer les processus et la prise de décision.
           </motion.p>
 
           <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-stretch gap-y-6">
@@ -59,20 +59,29 @@ export default function About() {
           <div className="relative">
             <div className="mb-8 flex items-center justify-between">
               <h3 className="font-display text-2xl font-bold tracking-tighter sm:text-3xl">Ma boîte à outils</h3>
-              <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">{skills.length} skills</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+                {skillGroups.reduce((n, g) => n + g.items.length, 0)} skills
+              </span>
             </div>
-            <div className="flex flex-wrap gap-3">
-              {skills.map((s, i) => (
-                <motion.span
-                  key={s}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ delay: i * 0.05, duration: 0.6 }}
-                  className="cursor-default rounded-full border border-white/10 bg-[#14181f]/80 px-4 py-2 text-sm font-medium text-gray-300 transition-all duration-300 hover:border-[#00df8f] hover:text-[#00df8f] hover:shadow-[0_0_15px_rgba(0,223,143,0.3)]"
-                >
-                  {s}
-                </motion.span>
+            <div className="space-y-7">
+              {skillGroups.map((group) => (
+                <div key={group.title}>
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#00df8f]">{group.title}</p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {group.items.map((s, i) => (
+                      <motion.span
+                        key={s}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-100px' }}
+                        transition={{ delay: i * 0.1, duration: 0.6 }}
+                        className="cursor-default rounded-full border border-white/10 bg-[#14181f]/80 px-4 py-2 text-sm font-medium text-gray-300 transition-all duration-300 hover:border-[#00df8f] hover:text-[#00df8f] hover:shadow-[0_0_15px_rgba(0,223,143,0.3)]"
+                      >
+                        {s}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 
@@ -80,7 +89,7 @@ export default function About() {
 
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
               <div>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-500">Transversales</p>
+                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-500">Soft skills</p>
                 <ul className="space-y-2 text-sm text-gray-300">
                   {softSkills.map((s) => (
                     <li key={s} className="flex items-center gap-2">
@@ -91,13 +100,14 @@ export default function About() {
               </div>
               <div>
                 <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-500">Langues</p>
-                <div className="flex flex-wrap gap-2">
+                <ul className="space-y-2">
                   {languages.map((l) => (
-                    <span key={l} className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-gray-300">
-                      {l}
-                    </span>
+                    <li key={l.name} className="flex items-center justify-between gap-4 rounded-lg border border-white/10 px-3 py-1.5 text-sm">
+                      <span className="text-gray-300">{l.name}</span>
+                      <span className="text-xs uppercase tracking-widest text-gray-500">{l.level}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           </div>

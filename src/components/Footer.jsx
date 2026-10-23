@@ -30,8 +30,8 @@ export default function Footer() {
               <span className="text-[#00df8f]">?</span>
             </motion.h2>
             <motion.p {...fadeUp} className="mt-8 max-w-lg text-base leading-relaxed text-gray-400 sm:text-lg">
-              Actuellement à la recherche d’un emploi en informatique — BI, data, développement
-              applicatif, bases de données ou administration système. Parlons de votre projet.
+              Ingénieur BI & Data disponible pour de nouvelles opportunités — Business Intelligence,
+              analyse de données, data engineering ou IA appliquée. Parlons de votre projet.
             </motion.p>
             <motion.div {...fadeUp} className="mt-10 flex flex-wrap gap-4">
               <motion.a
@@ -96,7 +96,7 @@ export default function Footer() {
         <div className="mt-32 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-gray-500 sm:mt-48 sm:flex-row">
           <p>© 2026 Reda Laksyer Portfolio. Tous droits réservés.</p>
           <div className="flex gap-6">
-            <span>Témara — Rabat, Maroc</span>
+            <span>{profile.location}</span>
             <button onClick={() => scrollToId()} className="uppercase tracking-widest hover:text-[#00df8f]">
               Haut de page ↑
             </button>
