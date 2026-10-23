@@ -3,16 +3,18 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, Check, Copy, Mail, MapPin, Phone } from 'lucide-react'
 import { fadeUp, scrollToId } from '../lib/utils'
 import { profile } from '../data/profile'
+import { useLang } from '../i18n/LanguageContext'
 
 const menu = [
-  { label: 'Accueil', id: null },
-  { label: 'À propos', id: 'about' },
-  { label: 'Parcours', id: 'journey' },
-  { label: 'Projets', id: 'work' },
+  { key: 'home', id: null },
+  { key: 'about', id: 'about' },
+  { key: 'journey', id: 'journey' },
+  { key: 'work', id: 'work' },
 ]
 
 export default function Footer() {
   const [copied, setCopied] = useState(false)
+  const { t, data } = useLang()
 
   const copyEmail = async () => {
     try {
@@ -36,15 +38,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <motion.p {...fadeUp} className="mb-6 text-xs font-semibold uppercase tracking-widest text-[#00df8f] sm:text-sm">
-              05 — Contact
+              {t.footer.label}
             </motion.p>
             <motion.h2 {...fadeUp} className="font-display text-5xl font-bold leading-[0.9] tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
-              TRAVAILLONS <span className="text-outline">ENSEMBLE</span>
+              {t.footer.title[0]} <span className="text-outline">{t.footer.title[1]}</span>
               <span className="text-[#00df8f]">?</span>
             </motion.h2>
             <motion.p {...fadeUp} className="mt-8 max-w-lg text-base leading-relaxed text-gray-400 sm:text-lg">
-              Ingénieur BI & Data disponible pour de nouvelles opportunités — Business Intelligence,
-              analyse de données, data engineering ou IA appliquée. Parlons de votre projet.
+              {t.footer.text}
             </motion.p>
             <motion.div {...fadeUp} className="mt-10 flex flex-wrap gap-4">
               <motion.a
@@ -62,7 +63,7 @@ export default function Footer() {
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {copied ? 'Adresse copiée !' : profile.email}
+                    {copied ? t.footer.copied : profile.email}
                   </motion.span>
                 </AnimatePresence>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#00df8f] text-[#0d1116] transition-transform duration-300 group-hover:rotate-12">
@@ -77,7 +78,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full border border-white/15 bg-[#14181f] py-2 pl-7 pr-2 font-semibold text-white transition-colors hover:border-[#00df8f]/60"
               >
-                Écrire via Gmail
+                {t.footer.gmail}
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:rotate-45">
                   <ArrowUpRight size={18} />
                 </span>
@@ -88,7 +89,7 @@ export default function Footer() {
                 <Phone size={16} className="text-[#00df8f]" /> {profile.phone}
               </a>
               <span className="flex items-center gap-2">
-                <MapPin size={16} className="text-[#00df8f]" /> {profile.location}
+                <MapPin size={16} className="text-[#00df8f]" /> {data.location}
               </span>
               <a href={profile.cv} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-[#00df8f]">
                 <Mail size={16} className="text-[#00df8f]" /> CV (PDF)
@@ -98,19 +99,19 @@ export default function Footer() {
 
           <motion.div {...fadeUp} className="grid grid-cols-2 gap-10 lg:col-span-5 lg:justify-self-end">
             <div>
-              <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-gray-500">Menu</p>
+              <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-gray-500">{t.footer.menu}</p>
               <ul className="space-y-4">
                 {menu.map((m) => (
-                  <li key={m.label}>
+                  <li key={m.key}>
                     <button onClick={() => scrollToId(m.id)} className="text-lg font-medium text-gray-300 transition-colors hover:text-[#00df8f]">
-                      {m.label}
+                      {t.nav[m.key]}
                     </button>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-gray-500">Réseaux</p>
+              <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-gray-500">{t.footer.socials}</p>
               <ul className="space-y-4">
                 {profile.socials.map((s) => (
                   <li key={s.label}>
@@ -131,11 +132,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-32 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-gray-500 sm:mt-48 sm:flex-row">
-          <p>© 2026 Reda Laksyer Portfolio. Tous droits réservés.</p>
+          <p>{t.footer.rights}</p>
           <div className="flex gap-6">
-            <span>{profile.location}</span>
+            <span>{data.location}</span>
             <button onClick={() => scrollToId()} className="uppercase tracking-widest hover:text-[#00df8f]">
-              Haut de page ↑
+              {t.footer.top}
             </button>
           </div>
         </div>

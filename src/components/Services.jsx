@@ -2,24 +2,25 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Minus, Plus } from 'lucide-react'
 import { fadeUp } from '../lib/utils'
-import { stages } from '../data/profile'
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Services() {
   const [open, setOpen] = useState(0)
+  const { t, data } = useLang()
 
   return (
     <section className="relative border-t border-white/10 bg-[#0b0e12] py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <motion.p {...fadeUp} className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-[#00df8f] sm:text-sm">
-          04 — Méthode
+          {t.services.label}
         </motion.p>
         <motion.h2 {...fadeUp} className="mb-16 text-center font-display text-4xl font-bold leading-[0.9] tracking-tighter sm:text-5xl md:text-6xl">
-          LES ÉTAPES D’UN PROJET <span className="text-outline">DATA</span>
+          {t.services.title[0]} <span className="text-outline">{t.services.title[1]}</span>
           <span className="text-[#00df8f]">.</span>
         </motion.h2>
 
         <ul className="border-t border-white/10">
-          {stages.map((s, i) => {
+          {data.stages.map((s, i) => {
             const isOpen = open === i
             return (
               <motion.li

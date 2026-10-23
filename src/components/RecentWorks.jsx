@@ -2,11 +2,14 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { fadeUp } from '../lib/utils'
-import { profile, projects } from '../data/profile'
+import { profile } from '../data/profile'
+import { useLang } from '../i18n/LanguageContext'
 
 const ease = [0.32, 0.72, 0, 1]
 
 export default function RecentWorks() {
+  const { t, data } = useLang()
+  const projects = data.projects
   const [activeIdx, setActiveIdx] = useState(0)
   const total = projects.length
   const active = projects[activeIdx]
@@ -21,10 +24,10 @@ export default function RecentWorks() {
         <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <motion.p {...fadeUp} className="mb-6 text-xs font-semibold uppercase tracking-widest text-[#00df8f] sm:text-sm">
-              03 — Projets
+              {t.work.label}
             </motion.p>
             <motion.h2 {...fadeUp} className="font-display text-4xl font-bold leading-[0.9] tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              RECENT <span className="text-outline">WORKS</span>
+              {t.work.title[0]} <span className="text-outline">{t.work.title[1]}</span>
               <span className="text-[#00df8f]">.</span>
             </motion.h2>
           </div>
@@ -35,7 +38,7 @@ export default function RecentWorks() {
             rel="noreferrer"
             className="group flex w-fit items-center gap-3 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold transition-colors hover:border-[#00df8f] hover:text-[#00df8f]"
           >
-            Voir tout sur GitHub
+            {t.work.seeAll}
             <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:rotate-45" />
           </motion.a>
         </div>
@@ -94,7 +97,7 @@ export default function RecentWorks() {
                 <button
                   key={p.id}
                   onClick={() => setActiveIdx(idx)}
-                  aria-label={`Projet ${idx + 1}`}
+                  aria-label={`${t.work.project} ${idx + 1}`}
                   className={`h-2 rounded-full transition-all duration-500 ${
                     idx === activeIdx ? 'w-10 bg-[#00df8f]' : 'w-2 bg-white/20 hover:bg-white/40'
                   }`}
@@ -136,7 +139,7 @@ export default function RecentWorks() {
                   rel="noreferrer"
                   className="group mt-10 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] py-2 pl-6 pr-2 font-semibold text-[#0d1116]"
                 >
-                  Explorer le projet
+                  {t.work.explore}
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0d1116] text-white transition-transform duration-300 group-hover:rotate-45">
                     <ArrowUpRight size={16} />
                   </span>

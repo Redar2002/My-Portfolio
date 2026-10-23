@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, Check, Copy, Phone } from 'lucide-react'
 import { profile } from '../data/profile'
+import { useLang } from '../i18n/LanguageContext'
 
 const ease = [0.32, 0.72, 0, 1]
 const SPARKS = 14
@@ -29,6 +30,7 @@ function Sparks() {
 export default function ContactCurtain({ open, anchor, onClose, onSeeContact }) {
   const panel = useRef(null)
   const [copied, setCopied] = useState(false)
+  const { t } = useLang()
   const [burst, setBurst] = useState(0)
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function ContactCurtain({ open, anchor, onClose, onSeeContact }) 
         <motion.div
           ref={panel}
           role="dialog"
-          aria-label="Me contacter"
+          aria-label={t.navbar.contactMe}
           initial={{ clipPath: 'inset(0% 0% 100% 0% round 28px)', y: -10 }}
           animate={{ clipPath: 'inset(0% 0% 0% 0% round 28px)', y: 0 }}
           exit={{ clipPath: 'inset(0% 0% 100% 0% round 28px)', y: -10 }}
@@ -106,14 +108,14 @@ export default function ContactCurtain({ open, anchor, onClose, onSeeContact }) 
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00df8f] opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00df8f]" />
               </span>
-              Disponible — réponse rapide
+              {t.curtain.status}
             </motion.p>
 
             <motion.p
               variants={{ hidden: { opacity: 0, y: -10 }, show: { opacity: 1, y: 0 } }}
               className="mt-4 font-display text-2xl font-bold leading-none tracking-tighter text-white"
             >
-              Écrivez-moi<span className="text-[#00df8f]">.</span>
+              {t.curtain.title}<span className="text-[#00df8f]">.</span>
             </motion.p>
 
             <motion.button
@@ -125,7 +127,7 @@ export default function ContactCurtain({ open, anchor, onClose, onSeeContact }) 
               }`}
             >
               <span className="min-w-0">
-                <span className="block text-[10px] font-semibold uppercase tracking-widest text-gray-500">E-mail</span>
+                <span className="block text-[10px] font-semibold uppercase tracking-widest text-gray-500">{t.curtain.email}</span>
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.span
                     key={copied ? 'ok' : 'mail'}
@@ -135,7 +137,7 @@ export default function ContactCurtain({ open, anchor, onClose, onSeeContact }) 
                     transition={{ duration: 0.25 }}
                     className={`mt-1 block truncate text-sm font-semibold ${copied ? 'text-[#00df8f]' : 'text-white'}`}
                   >
-                    {copied ? 'Adresse copiée !' : profile.email}
+                    {copied ? t.curtain.copied : profile.email}
                   </motion.span>
                 </AnimatePresence>
               </span>
@@ -176,7 +178,7 @@ export default function ContactCurtain({ open, anchor, onClose, onSeeContact }) 
                 href={profile.phoneHref}
                 className="flex items-center justify-between rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-gray-300 transition-colors hover:border-[#00df8f]/60 hover:text-white"
               >
-                Appeler
+                {t.curtain.call}
                 <Phone size={14} />
               </a>
             </motion.div>
@@ -186,7 +188,7 @@ export default function ContactCurtain({ open, anchor, onClose, onSeeContact }) 
               onClick={onSeeContact}
               className="mt-5 w-full text-center text-[11px] font-semibold uppercase tracking-widest text-gray-500 transition-colors hover:text-[#00df8f]"
             >
-              Voir la section contact ↓
+              {t.curtain.seeContact}
             </motion.button>
           </motion.div>
         </motion.div>

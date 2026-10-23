@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight, Download } from 'lucide-react'
 import { scrollToId } from '../lib/utils'
 import { profile } from '../data/profile'
+import { useLang } from '../i18n/LanguageContext'
 
 const ease = [0.22, 1, 0.36, 1]
 
@@ -14,6 +15,7 @@ const reveal = (delay) => ({
 
 function IdCard() {
   const constraints = useRef(null)
+  const { t, data } = useLang()
 
   return (
     <div ref={constraints} className="relative flex h-[660px] w-full items-start justify-center sm:h-[740px] lg:h-[620px]">
@@ -55,7 +57,7 @@ function IdCard() {
               <div className="mb-2 flex items-center justify-between px-2 pt-1 text-[10px] font-semibold uppercase tracking-widest text-gray-500">
                 <span>ID • 2026</span>
                 <span className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#00df8f]" /> Disponible
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#00df8f]" /> {t.hero.available}
                 </span>
               </div>
               <div className="relative h-[340px] overflow-hidden rounded-2xl sm:h-[390px]">
@@ -72,7 +74,7 @@ function IdCard() {
                     <span className="text-[#00df8f]">.</span>
                   </p>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-gray-300">
-                    {profile.shortRole}
+                    {data.shortRole}
                   </p>
                 </div>
               </div>
@@ -94,6 +96,8 @@ function IdCard() {
 }
 
 export default function Hero() {
+  const { t, data } = useLang()
+
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-[#0d1116] bg-grid pt-24">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -110,7 +114,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00df8f] opacity-60" />
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#00df8f]" />
             </span>
-            {profile.role}
+            {data.role}
           </motion.p>
 
           <h1 className="font-display font-bold leading-[0.9] tracking-tighter">
@@ -124,10 +128,9 @@ export default function Hero() {
           </h1>
 
           <motion.p {...reveal(0.5)} className="mt-8 max-w-xl text-base leading-relaxed text-gray-400 sm:text-lg">
-            Je suis <span className="font-semibold text-white">{profile.firstName} {profile.lastName}</span>,
-            ingénieur d’État en Business Intelligence & analyse de données. Je transforme les
-            données en indicateurs fiables : Data Marts, flux ETL, tableaux de bord Power BI et
-            solutions d’IA générative (NLP, RAG, LLM) en Python.
+            {t.hero.intro[0]}
+            <span className="font-semibold text-white">{profile.firstName} {profile.lastName}</span>
+            {t.hero.intro[1]}
           </motion.p>
 
           <motion.div {...reveal(0.65)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -137,7 +140,7 @@ export default function Hero() {
               onClick={() => scrollToId('work')}
               className="group flex items-center gap-3 rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] py-2 pl-7 pr-2 font-semibold text-[#0d1116] shadow-[0_10px_40px_-10px_rgba(0,223,143,0.7)]"
             >
-              Voir mes projets
+              {t.hero.seeWork}
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0d1116] text-white transition-transform duration-300 group-hover:rotate-45">
                 <ArrowUpRight size={18} />
               </span>
@@ -151,7 +154,7 @@ export default function Hero() {
               className="flex items-center gap-3 rounded-full border border-white/15 bg-[#14181f] px-7 py-4 font-semibold text-white transition-colors hover:border-[#00df8f]/60"
             >
               <span className="h-2 w-2 rounded-full bg-[#00df8f]" />
-              Mon CV
+              {t.hero.cv}
               <Download size={16} className="text-gray-400" />
             </motion.a>
           </motion.div>
@@ -176,7 +179,7 @@ export default function Hero() {
         onClick={() => scrollToId('about')}
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[10px] font-semibold uppercase tracking-widest text-gray-500 md:flex"
       >
-        Scroll
+        {t.hero.scroll}
         <span className="relative h-10 w-6 rounded-full border border-white/20">
           <motion.span
             animate={{ y: [4, 18, 4] }}

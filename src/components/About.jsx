@@ -1,40 +1,32 @@
 import { motion } from 'framer-motion'
 import { fadeUp } from '../lib/utils'
-import { languages, skillGroups, softSkills } from '../data/profile'
-
-const stats = [
-  { value: '2026', label: "Ingénieur d'État ISMAGI" },
-  { value: '2', label: 'Stages en entreprise' },
-  { value: '30+', label: 'Technologies maîtrisées' },
-]
+import { useLang } from '../i18n/LanguageContext'
 
 export default function About() {
+  const { t, data } = useLang()
+  const { skillGroups, softSkills, languages } = data
+  const p1 = t.about.p1
+
   return (
     <section id="about" className="relative scroll-mt-20 py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
         <div>
           <motion.p {...fadeUp} className="mb-6 text-xs font-semibold uppercase tracking-widest text-[#00df8f] sm:text-sm">
-            01 — À propos
+            {t.about.label}
           </motion.p>
           <motion.h2 {...fadeUp} className="font-display text-4xl font-bold leading-[0.9] tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            DESIGNING WITH <span className="text-outline">DATA</span>
-            <span className="text-[#00df8f]">.</span>
+            {t.about.title[0]} <span className="text-outline">{t.about.title[1]}</span>
+            <span className="text-[#00df8f]">{t.about.title[2]}</span>
           </motion.h2>
           <motion.p {...fadeUp} className="mt-8 text-base leading-relaxed text-gray-400 sm:text-lg">
-            Ingénieur d’État en informatique, spécialisé en Business Intelligence et en analyse de
-            données, diplômé de l’ISMAGI (2026). J’ai de l’expérience en conception de Data Marts et
-            de flux ETL (<span className="text-white">SQL Server, SSIS, SSAS</span>), en création de
-            tableaux de bord <span className="text-white">Power BI</span> et en développement de
-            solutions d’<span className="text-white">IA générative (NLP, RAG, LLM)</span> avec Python.
+            {p1.map((part, i) => (i % 2 ? <span key={i} className="text-white">{part}</span> : part))}
           </motion.p>
           <motion.p {...fadeUp} className="mt-5 text-base leading-relaxed text-gray-400 sm:text-lg">
-            Mon parcours — développement digital, Internet des Objets puis Business Intelligence —
-            me permet de relier le code, la donnée et la décision. Je transforme les données en
-            indicateurs fiables pour améliorer les processus et la prise de décision.
+            {t.about.p2}
           </motion.p>
 
           <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-stretch gap-y-6">
-            {stats.map((s, i) => (
+            {t.about.stats.map((s, i) => (
               <div key={s.label} className="flex items-stretch">
                 {i > 0 && <span className="mx-6 w-px bg-white/10 sm:mx-10" />}
                 <div>
@@ -58,9 +50,9 @@ export default function About() {
           <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#00df8f]/10 blur-3xl" />
           <div className="relative">
             <div className="mb-8 flex items-center justify-between">
-              <h3 className="font-display text-2xl font-bold tracking-tighter sm:text-3xl">Ma boîte à outils</h3>
+              <h3 className="font-display text-2xl font-bold tracking-tighter sm:text-3xl">{t.about.toolbox}</h3>
               <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-                {skillGroups.reduce((n, g) => n + g.items.length, 0)} skills
+                {skillGroups.reduce((n, g) => n + g.items.length, 0)} {t.about.skills}
               </span>
             </div>
             <div className="space-y-7">
@@ -89,7 +81,7 @@ export default function About() {
 
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
               <div>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-500">Soft skills</p>
+                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-500">{t.about.soft}</p>
                 <ul className="space-y-2 text-sm text-gray-300">
                   {softSkills.map((s) => (
                     <li key={s} className="flex items-center gap-2">
@@ -99,7 +91,7 @@ export default function About() {
                 </ul>
               </div>
               <div>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-500">Langues</p>
+                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-500">{t.about.languages}</p>
                 <ul className="space-y-2">
                   {languages.map((l) => (
                     <li key={l.name} className="flex items-center justify-between gap-4 rounded-lg border border-white/10 px-3 py-1.5 text-sm">

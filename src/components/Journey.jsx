@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Briefcase, GraduationCap } from 'lucide-react'
 import { fadeUp } from '../lib/utils'
-import { education, experiences } from '../data/profile'
+import { useLang } from '../i18n/LanguageContext'
 
 function Timeline({ icon: Icon, title, items, render }) {
   return (
@@ -34,14 +34,16 @@ function Timeline({ icon: Icon, title, items, render }) {
 }
 
 export default function Journey() {
+  const { t, data } = useLang()
+
   return (
     <section id="journey" className="relative scroll-mt-20 border-t border-white/10 bg-[#0b0e12] py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <motion.p {...fadeUp} className="mb-6 text-xs font-semibold uppercase tracking-widest text-[#00df8f] sm:text-sm">
-          02 — Parcours
+          {t.journey.label}
         </motion.p>
         <motion.h2 {...fadeUp} className="mb-16 font-display text-4xl font-bold leading-[0.9] tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-          EXPÉRIENCE & <span className="text-outline">FORMATION</span>
+          {t.journey.title[0]} <span className="text-outline">{t.journey.title[1]}</span>
           <span className="text-[#00df8f]">.</span>
         </motion.h2>
 
@@ -49,8 +51,8 @@ export default function Journey() {
           <div className="lg:col-span-7">
             <Timeline
               icon={Briefcase}
-              title="Expériences"
-              items={experiences}
+              title={t.journey.experiences}
+              items={data.experiences}
               render={(e) => (
                 <>
                   <p className="mt-1 text-sm text-gray-500">{e.place}</p>
@@ -69,8 +71,8 @@ export default function Journey() {
           <div className="lg:col-span-5">
             <Timeline
               icon={GraduationCap}
-              title="Formation"
-              items={education}
+              title={t.journey.education}
+              items={data.education}
               render={(e) => (
                 <>
                   <p className="mt-1 text-sm text-gray-400">{e.school}</p>

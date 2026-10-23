@@ -11,12 +11,14 @@ import { ArrowUpRight } from 'lucide-react'
 import { scrollToId } from '../lib/utils'
 import { profile } from '../data/profile'
 import ContactCurtain from './ContactCurtain'
+import LanguageToggle from './LanguageToggle'
+import { useLang } from '../i18n/LanguageContext'
 
 const links = [
-  { label: 'À propos', id: 'about' },
-  { label: 'Parcours', id: 'journey' },
-  { label: 'Projets', id: 'work' },
-  { label: 'Contact', id: 'contact' },
+  { id: 'about' },
+  { id: 'journey' },
+  { id: 'work' },
+  { id: 'contact' },
 ]
 
 const spring = { type: 'spring', stiffness: 260, damping: 30 }
@@ -72,6 +74,7 @@ function Magnetic({ children, strength = 0.35, className = '' }) {
 }
 
 function Logo({ onClick }) {
+  const { t } = useLang()
   const letters = profile.firstName.toUpperCase().split('')
   return (
     <motion.button
@@ -79,7 +82,7 @@ function Logo({ onClick }) {
       initial="rest"
       whileHover="hover"
       animate="rest"
-      aria-label="Retour en haut"
+      aria-label={t.navbar.backToTop}
       className="relative flex items-center font-display text-2xl font-bold tracking-tighter text-white"
     >
       {letters.map((l, i) => (
@@ -102,11 +105,12 @@ function Logo({ onClick }) {
 }
 
 function MenuToggle({ open, onClick }) {
+  const { t } = useLang()
   return (
     <Magnetic>
       <button
         onClick={onClick}
-        aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+        aria-label={open ? t.navbar.closeMenu : t.navbar.openMenu}
         aria-expanded={open}
         className={`relative flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300 ${
           open ? 'border-[#00df8f] bg-[#00df8f]' : 'border-white/15 bg-[#14181f] hover:border-[#00df8f]/60'
@@ -128,6 +132,7 @@ function MenuToggle({ open, onClick }) {
 }
 
 function MobileMenu({ active, onNavigate }) {
+  const { t } = useLang()
   return (
     <motion.div
       initial={{ clipPath: 'circle(0% at 92% 48px)' }}
@@ -158,7 +163,7 @@ function MobileMenu({ active, onNavigate }) {
                   active === l.id ? 'text-outline' : 'text-white group-hover:text-[#00df8f]'
                 }`}
               >
-                {l.label}
+                {t.nav[l.id]}
               </span>
             </button>
           </motion.li>
@@ -188,6 +193,7 @@ function MobileMenu({ active, onNavigate }) {
 }
 
 export default function Navbar() {
+  const { t } = useLang()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -244,7 +250,7 @@ export default function Navbar() {
         <motion.nav
           initial={false}
           animate={{
-            maxWidth: compact ? 880 : 1280,
+            maxWidth: compact ? 980 : 1280,
             marginTop: compact ? 14 : 0,
             height: compact ? 64 : 96,
             borderRadius: compact ? 9999 : 0,
@@ -290,7 +296,7 @@ export default function Navbar() {
                       animate={{ y: hovered === l.id ? '-160%' : '0%' }}
                       transition={{ duration: 0.35, ease }}
                     >
-                      {l.label}
+                      {t.nav[l.id]}
                     </motion.span>
                     <motion.span
                       aria-hidden
@@ -299,7 +305,7 @@ export default function Navbar() {
                       animate={{ y: hovered === l.id ? '0%' : '160%' }}
                       transition={{ duration: 0.35, ease }}
                     >
-                      {l.label}
+                      {t.nav[l.id]}
                     </motion.span>
                   </button>
                 </li>
@@ -308,7 +314,8 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-3">
-            <Magnetic className="hidden md:block">
+            <LanguageToggle />
+            <Magnetic className="hidden lg:block">
               <button
                 ref={contactBtn}
                 onClick={() => setCurtain((c) => !c)}
@@ -316,7 +323,7 @@ export default function Navbar() {
                 className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] py-2 pl-5 pr-2 text-sm font-semibold text-[#0d1116] shadow-[0_8px_30px_-8px_rgba(0,223,143,0.7)]"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                <span className="relative">Me contacter</span>
+                <span className="relative">{t.navbar.contactMe}</span>
                 <motion.span
                   animate={{ rotate: curtain ? 135 : 0 }}
                   transition={spring}
