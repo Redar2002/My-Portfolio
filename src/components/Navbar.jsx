@@ -193,12 +193,17 @@ export default function Navbar() {
   const [hovered, setHovered] = useState(null)
   const active = useActiveSection()
 
+  const navigating = useRef(false)
+  const navTimer = useRef(null)
+
   const { scrollY, scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 25 })
 
   useMotionValueEvent(scrollY, 'change', (y) => {
     const prev = scrollY.getPrevious() ?? 0
     setScrolled(y > 40)
+    // Pendant un défilement lancé depuis la navbar, elle reste visible
+    if (navigating.current) return setHidden(false)
     setHidden(y > prev && y > 300)
   })
 
@@ -214,6 +219,10 @@ export default function Navbar() {
 
   const go = (id) => {
     setOpen(false)
+    setHidden(false)
+    navigating.current = true
+    clearTimeout(navTimer.current)
+    navTimer.current = setTimeout(() => (navigating.current = false), 1500)
     // Laisse le menu se refermer avant de défiler
     setTimeout(() => scrollToId(id), open ? 350 : 0)
   }
