@@ -25,11 +25,13 @@ export const ui = {
       ],
       seeWork: 'Voir mes projets',
       cv: 'Mon CV',
-      scroll: 'Scroll',
+      scroll: 'Défiler',
+      title: ['LA DATA', 'QUI PARLE'],
+      bg: 'DONNÉES',
     },
     about: {
       label: '01 — À propos',
-      title: ['DESIGNING WITH', 'DATA', '.'],
+      title: ['CONCEVOIR AVEC', 'LA DATA', '.'],
       p1: [
         'Ingénieur d’État en informatique, spécialisé en Business Intelligence et en analyse de données, diplômé de l’ISMAGI (2026). J’ai de l’expérience en conception de Data Marts et de flux ETL (',
         'SQL Server, SSIS, SSAS',
@@ -46,8 +48,8 @@ export const ui = {
         { value: '30+', label: 'Technologies maîtrisées' },
       ],
       toolbox: 'Ma boîte à outils',
-      skills: 'skills',
-      soft: 'Soft skills',
+      skills: 'compétences',
+      soft: 'Savoir-être',
       languages: 'Langues',
     },
     journey: {
@@ -58,7 +60,7 @@ export const ui = {
     },
     work: {
       label: '03 — Projets',
-      title: ['RECENT', 'WORKS'],
+      title: ['PROJETS', 'RÉCENTS'],
       seeAll: 'Voir tout sur GitHub',
       explore: 'Explorer le projet',
       project: 'Projet',
@@ -106,6 +108,8 @@ export const ui = {
       seeWork: 'View my work',
       cv: 'My resume',
       scroll: 'Scroll',
+      title: ['DATA-DRIVEN', 'INSIGHTS'],
+      bg: 'DATA',
     },
     about: {
       label: '01 — About',

@@ -59,12 +59,12 @@ const skillItems = {
 export const content = {
   fr: {
     role: 'Ingénieur BI & Data',
-    shortRole: 'BI & Data Engineer',
+    shortRole: 'Ingénieur BI & Data',
     location: 'Rabat, Maroc',
     skillGroups: [
-      { title: 'Data & BI', items: [...skillItems.bi, 'Modélisation décisionnelle', 'KPI'] },
-      { title: 'Data Science & IA', items: skillItems.ai },
-      { title: 'Développement', items: skillItems.dev },
+      { title: 'Données & BI', items: [...skillItems.bi, 'Modélisation décisionnelle', 'KPI'] },
+      { title: 'Science des données & IA', items: skillItems.ai },
+      { title: 'Développement', items: skillItems.dev.map((s) => (s === 'REST API' ? 'API REST' : s)) },
       { title: 'Outils', items: skillItems.tools },
     ],
     softSkills: ["Esprit d'analyse", 'Rigueur', 'Autonomie', "Esprit d'équipe", "Capacité d'apprentissage"],
@@ -123,7 +123,7 @@ export const content = {
       ),
       project(
         'energy',
-        'Machine Learning · Data Viz',
+        'Machine Learning · Visualisation',
         'Prévision des flux électriques en Belgique',
         "Projet de fin d'année : collecte des données via l'API Elia, entraînement de modèles de Machine Learning pour prévoir les flux électriques transfrontaliers, et tableau de bord interactif de suivi et d'analyse des flux.",
       ),
@@ -141,18 +141,18 @@ export const content = {
       ),
       project(
         'robot',
-        'IoT & Computer Vision',
-        'Robot de Détection YOLO',
+        'IoT & Vision par ordinateur',
+        'Robot de détection YOLO',
         "Système robotisé de détection, saisie et transport automatisé d'objets avec un bras VEX, un robot mobile, un convoyeur et une caméra embarquée. 95 % de précision en détection et 90 % en manipulation.",
       ),
     ],
     stages: [
-      { title: 'BRIEFING', text: 'Comprendre les objectifs métier, les utilisateurs et les indicateurs attendus, pour relier chaque KPI à une décision concrète.' },
+      { title: 'CADRAGE', text: 'Comprendre les objectifs métier, les utilisateurs et les indicateurs attendus, pour relier chaque KPI à une décision concrète.' },
       { title: 'COLLECTE', text: 'Audit et intégration des sources (bases OLTP, fichiers, API comme Elia), contrôle de la qualité et de la volumétrie des données.' },
       { title: 'MODÉLISATION', text: 'Conception décisionnelle en étoile ou en flocon : Data Warehouse / Data Mart, tables de faits, dimensions, granularité et mesures clés.' },
       { title: 'ETL / ELT', text: 'Flux d’extraction, transformation et chargement avec SSIS ou Python (Pandas) : nettoyage, historisation et automatisation.' },
       { title: 'ANALYSE & IA', text: 'Cubes SSAS, modèles de Machine Learning pour la prévision, et IA générative (NLP, RAG, LLM) pour extraire de la valeur du texte.' },
-      { title: 'DASHBOARDS', text: 'Tableaux de bord Power BI ou Tableau clairs, interactifs et orientés décision, puis validation avec les métiers et itérations.' },
+      { title: 'TABLEAUX DE BORD', text: 'Tableaux de bord Power BI ou Tableau clairs, interactifs et orientés décision, puis validation avec les métiers et itérations.' },
     ],
   },
 

@@ -102,7 +102,7 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden bg-[#0d1116] bg-grid pt-24">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <span className="select-none font-display text-[20vw] font-bold leading-none tracking-tighter text-white opacity-[0.02]">
-          DATA
+          {t.hero.bg}
         </span>
       </div>
       <div className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-[#00df8f]/10 blur-[120px]" />
@@ -119,10 +119,10 @@ export default function Hero() {
 
           <h1 className="font-display font-bold leading-[0.9] tracking-tighter">
             <motion.span {...reveal(0.2)} className="block text-5xl text-white sm:text-6xl md:text-7xl xl:text-8xl">
-              DATA-DRIVEN
+              {t.hero.title[0]}
             </motion.span>
             <motion.span {...reveal(0.35)} className="mt-2 block text-5xl sm:text-6xl md:text-7xl xl:text-8xl">
-              <span className="text-outline">INSIGHTS</span>
+              <span className="text-outline">{t.hero.title[1]}</span>
               <span className="text-[#00df8f]">.</span>
             </motion.span>
           </h1>
