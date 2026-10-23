@@ -11,7 +11,6 @@ import { ArrowUpRight } from 'lucide-react'
 import { scrollToId } from '../lib/utils'
 import { profile } from '../data/profile'
 import ContactCurtain from './ContactCurtain'
-import LanguageToggle from './LanguageToggle'
 import { useLang } from '../i18n/LanguageContext'
 
 const links = [
@@ -250,7 +249,7 @@ export default function Navbar() {
         <motion.nav
           initial={false}
           animate={{
-            maxWidth: compact ? 980 : 1280,
+            maxWidth: compact ? 880 : 1280,
             marginTop: compact ? 14 : 0,
             height: compact ? 64 : 96,
             borderRadius: compact ? 9999 : 0,
@@ -314,8 +313,7 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-3">
-            <LanguageToggle />
-            <Magnetic className="hidden lg:block">
+            <Magnetic className="hidden md:block">
               <button
                 ref={contactBtn}
                 onClick={() => setCurtain((c) => !c)}
