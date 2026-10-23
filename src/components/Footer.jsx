@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
-import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowUpRight, Check, Copy, Mail, MapPin, Phone } from 'lucide-react'
 import { fadeUp, scrollToId } from '../lib/utils'
 import { profile } from '../data/profile'
 
@@ -11,6 +12,18 @@ const menu = [
 ]
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // Presse-papiers indisponible : le lien mailto prend le relais
+    }
+  }
+
   return (
     <footer id="contact" className="relative overflow-hidden border-t border-white/10 pb-10 pt-24 sm:pt-32">
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center">
@@ -38,10 +51,34 @@ export default function Footer() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 href={`mailto:${profile.email}`}
+                onClick={copyEmail}
                 className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-7 pr-2 font-semibold text-black"
               >
-                {profile.email}
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#00df8f] text-[#0d1116] transition-transform duration-300 group-hover:rotate-45">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={copied ? 'copied' : 'email'}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {copied ? 'Adresse copiée !' : profile.email}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#00df8f] text-[#0d1116] transition-transform duration-300 group-hover:rotate-12">
+                  {copied ? <Check size={18} /> : <Copy size={16} />}
+                </span>
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-3 rounded-full border border-white/15 bg-[#14181f] py-2 pl-7 pr-2 font-semibold text-white transition-colors hover:border-[#00df8f]/60"
+              >
+                Écrire via Gmail
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:rotate-45">
                   <ArrowUpRight size={18} />
                 </span>
               </motion.a>

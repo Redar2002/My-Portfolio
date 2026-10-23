@@ -296,8 +296,8 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <Magnetic className="hidden md:block">
-              <a
-                href={`mailto:${profile.email}`}
+              <button
+                onClick={() => go('contact')}
                 className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] py-2 pl-5 pr-2 text-sm font-semibold text-[#0d1116] shadow-[0_8px_30px_-8px_rgba(0,223,143,0.7)]"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -305,7 +305,7 @@ export default function Navbar() {
                 <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#0d1116] text-white transition-transform duration-300 group-hover:rotate-45">
                   <ArrowUpRight size={15} />
                 </span>
-              </a>
+              </button>
             </Magnetic>
             <div className="md:hidden">
               <MenuToggle open={open} onClick={() => setOpen((o) => !o)} />
